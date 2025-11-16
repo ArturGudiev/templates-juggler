@@ -1,0 +1,32 @@
+{
+  "name": "templates-juggler",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A tool for getting a list of common templates",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "start": "node dist/index.js",
+    "start2": "npx ts-node src/index.ts",
+    "dev": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ArturGudiev/templates-juggler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArturGudiev/templates-juggler/issues"
+  },
+  "homepage": "https://github.com/ArturGudiev/templates-juggler#readme",
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "ag-utils-lib": "^1.0.44"
+  }
+}
