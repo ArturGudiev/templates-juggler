@@ -1,4 +1,4 @@
-import { selectIndexFromList, selectObjectFromList } from "ag-utils-lib";
+import { selectObjectFromList } from "ag-utils-lib";
 import { templatesService } from "./services/index.js";
 import { TEMPLATES_SET } from "./templates/index.js";
 

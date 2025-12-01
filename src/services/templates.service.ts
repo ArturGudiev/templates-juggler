@@ -1,5 +1,5 @@
 import { getJSONFileContent, selectIndexFromList, selectObjectFromList } from "ag-utils-lib";
-import { Template } from "../types/tempalte.interface.js";
+import { Template } from "../types/template.interface.js";
 
 function getTemplateContent(template: Template) {
     if (template.content) {

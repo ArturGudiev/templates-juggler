@@ -1,4 +1,4 @@
-import { Template } from "../types/tempalte.interface.js";
+import { Template } from "../types/template.interface.js";
 
 export default [
     {
