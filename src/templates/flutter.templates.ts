@@ -16,5 +16,14 @@ export default [
         child: Text('2222')    
     )  
 `
+    },
+        {
+        title: 'Elevated Button',
+        content: `
+        ElevatedButton(
+            onPressed: _toggleIncidentsPanel,
+            child: Text('Инциденты'),
+        ),
+`
     }
 ] as Template[];

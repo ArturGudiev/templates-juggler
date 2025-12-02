@@ -4,7 +4,7 @@ export default [
     {
         title: 'Button',
         content: `
-    <div>AAAA</div>        
+    <button type="submit" class="btn btn-primary">Some button</button>
 `
     },
     {
