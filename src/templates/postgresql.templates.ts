@@ -2,7 +2,7 @@ import { Template } from "../types/template.interface.js";
 
 export default [
     {
-        title: 'Select',
+        title: 'Remove database connections',
         content: `
     <mat-select [(value)]="status">
         @for (option of options; track option) {
