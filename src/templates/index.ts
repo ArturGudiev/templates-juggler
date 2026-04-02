@@ -8,6 +8,8 @@ import MATERIAL_TEMPLATES from "./material.templates.js";
 import FASTAPI_TEMPLATES from "./fastapi.templates.js";
 import POSTGRESQL_TEMPLATES from "./postgresql.templates.js";
 import HTML_TEMPLATES from "./html.templates.js";
+import CHP_TEMPLATES from "./chp.templates.js";
+
 
 
 export const TEMPLATES_SET: {[key: string]: Template[]} = {
@@ -20,4 +22,5 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'Vue': VUE_TEMPLATES,
     'PostgreSQL': POSTGRESQL_TEMPLATES,
     'HTML': HTML_TEMPLATES,
+    'CHP': CHP_TEMPLATES,
 };

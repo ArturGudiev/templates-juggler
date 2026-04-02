@@ -1,13 +1,10 @@
 import { Template } from "../types/template.interface.js";
 
 export default [
+    { title: 'Filter requests', content: 't:json'},
     {
         title: 'Flutter Button1',
-        content: `
-    Button(
-        child: Text('123')    
-    )  
-`
+        content: `Button(child: Text('123'))`
     },
      {
         title: 'CLI install packages',
