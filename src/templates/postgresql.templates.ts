@@ -13,6 +13,10 @@ export default [
         content: ` \\l `
     },
     {
+        title: 'Table structure',
+        content: ` \\d table_name `
+    },
+    {
         title: 'Rename database',
         content: ` ALTER DATABASE old_dbname RENAME TO new_dbname; `
     },
