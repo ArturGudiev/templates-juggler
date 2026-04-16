@@ -18,5 +18,15 @@ export default [
       <div style="grid-column: 3; text-align: right">X</div>
     </div>
 `
+    },
+        {
+        title: 'Linear gradient',
+        content: `
+
+    background: linear-gradient(to right, red 50%, blue 50%);
+    
+    background: linear-gradient(direction, color-stop1, color-stop2, ...);
+    
+`
     }
 ] as Template[];

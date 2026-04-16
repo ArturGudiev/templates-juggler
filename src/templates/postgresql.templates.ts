@@ -25,6 +25,10 @@ export default [
         content: `pg_restore -U имя_пользователя -d имя_бд имя_файла.dump`
     },
     {
+        title: 'Import data',
+        content: `psql -U postgres -d chpo_9 -f .\backup.sql`
+    },
+    {
         title: 'Export data',
         content: `pg_dump -U postgres -d chpo > backup.sql`
     }
