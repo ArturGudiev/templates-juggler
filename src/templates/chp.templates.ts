@@ -39,6 +39,14 @@ fGQHG');
         SelectedPanel.incident,
         { "incident": incident, "showBackIcon": showBackIcon }
     );
+        `
+    },
+    {
+        title: 'Inject repo in component with state',
+        content: `
+  class _IncidentPanelState extends State<AddIncidentPanel> {
+
+    final addressesRepository = getIt<AddressesRepository>();
 
 
         `
