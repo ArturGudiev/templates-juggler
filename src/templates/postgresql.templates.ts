@@ -17,6 +17,13 @@ export default [
         content: ` \\d table_name `
     },
     {
+        title: 'Insert into table',
+        content: `
+            INSERT INTO users (first_name, last_name, email) 
+            VALUES ('John', 'Doe', 'john.doe@example.com'); 
+        `
+    },
+    {
         title: 'Rename database',
         content: ` ALTER DATABASE old_dbname RENAME TO new_dbname; `
     },
