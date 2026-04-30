@@ -1,3 +1,4 @@
+import { getUserInput } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 
 export default [
@@ -5,6 +6,21 @@ export default [
   {
     title: "Flutter Button1",
     content: `Button(child: Text('123'))`,
+  },
+  {
+    title: "Text interactive",
+    templateFunction: async () => {
+      const content = await getUserInput('Enter content for text:');
+      const size = await getUserInput('Enter size for text:');
+      const fontWeight = await getUserInput('Enter font weight for text:');
+
+      return `Text('${content}', style: TextStyle(fontSize: ${size}, fontWeight: FontWeight.w${fontWeight}));`},
+  },
+  {
+    title: "Flutter Button Interactive",
+    templateFunction: async () => {
+      const res = await getUserInput('Enter something for button:');
+      return res + `From function --- Button(child: Text('123'))`},
   },
   {
     title: "CLI install packages",
@@ -114,6 +130,45 @@ class UserCard extends StatelessWidget {
   },
 
   {
+    title: "Stateful widget",
+    content: `
+import 'package:flutter/material.dart';
+
+class CounterWidget extends StatefulWidget {
+  const CounterWidget({super.key});
+
+  @override
+  State<CounterWidget> createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  // 1. Наше состояние (данные)
+  int _counter = 0;
+
+  void _increment() {
+    // 2. setState говорит Flutter: "Данные изменились, перерисуй экран!"
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Счетчик: $_counter'),
+        ElevatedButton(
+          onPressed: _increment,
+          child: const Text('Увеличить'),
+        ),
+      ],
+    );
+  }
+}
+    `
+  },
+
+  {
     title: "ListView.builder",
     content: `
       ListView.builder(
@@ -131,6 +186,11 @@ class UserCard extends StatelessWidget {
   {
     title: 'Input',
     content: `
+class _AddIncidentPanelState extends State<AddIncidentPanel> {
+  ...
+  final TextEditingController _nameController = TextEditingController();
+  ...
+
         TextField(
       controller: _nameController,
       decoration: InputDecoration(
