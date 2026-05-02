@@ -4,18 +4,15 @@ import FLUTTER_TEMPLATES from "./flutter.templates.js";
 import BASH_TEMPLATES from "./bash.templates.js";
 import VUE_TEMPLATES from "./vue.tempaltes.js";
 import GO_TEMPLATES from "./go.templates.js";
-<<<<<<< HEAD
 import GO_ENT_TEMPLATES from "./go_ent.templates.js";
-=======
 import GO_GIN_TEMPLATES from "./go-gin.templates.js";
->>>>>>> 48001bfb513e94220c3c67453e077149c22be911
 import MATERIAL_TEMPLATES from "./material.templates.js";
 import FASTAPI_TEMPLATES from "./fastapi.templates.js";
 import POSTGRESQL_TEMPLATES from "./postgresql.templates.js";
 import HTML_TEMPLATES from "./html.templates.js";
 import CHP_TEMPLATES from "./chp.templates.js";
 import TAILWIND_TEMPLATES from "./tailwind.templates.js";
-
+import DASHBOARD_TEMPLATES from "./dash.templates.js"
 import CSS_TEMPLATES from "./css.templates.js";
 
 
@@ -26,19 +23,14 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'Flutter': FLUTTER_TEMPLATES,
     'Bash': BASH_TEMPLATES,
     'Go': GO_TEMPLATES,
-<<<<<<< HEAD
     'Go Ent': GO_ENT_TEMPLATES,
-=======
     'Go-Gin': GO_GIN_TEMPLATES,
->>>>>>> 48001bfb513e94220c3c67453e077149c22be911
     'Vue': VUE_TEMPLATES,
     'PostgreSQL': POSTGRESQL_TEMPLATES,
     'HTML': HTML_TEMPLATES,
     'CHP': CHP_TEMPLATES,
-<<<<<<< HEAD
     'Tailwind': TAILWIND_TEMPLATES,
-
-=======
+    'Dashbpard': DASHBOARD_TEMPLATES,
     'CSS': CSS_TEMPLATES,
->>>>>>> 48001bfb513e94220c3c67453e077149c22be911
+
 };
