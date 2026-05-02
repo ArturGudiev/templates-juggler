@@ -16,5 +16,13 @@ export default [
 
       text-[17px] или text-[2rem]
 `
+    },
+    {
+        title: 'Flex --- center',
+        content: `
+      flex items-center
+      flex items-baseline
+
+`
     }
 ] as Template[];

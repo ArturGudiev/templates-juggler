@@ -1,0 +1,3 @@
+
+for mac os to run without sudo 
+sudo chown -R $(whoami) /Users/arturgudiev/Programming/NodeJS/templates-juggler

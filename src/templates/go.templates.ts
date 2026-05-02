@@ -47,5 +47,19 @@ func main() {
 }
         
         `
+    },
+    {
+        title: 'Sort array',
+        content: `
+        
+    sort.Slice(entries, func(i, j int) bool {
+		di, dj := entries[i].IsDir(), entries[j].IsDir()
+		if di != dj {
+			return di
+		}
+		return entries[i].Name() < entries[j].Name()
+	})
+
+        `,
     }
 ] as Template[];

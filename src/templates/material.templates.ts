@@ -29,5 +29,16 @@ export default [
 
       groupType = model<'container' | 'global' | 'all'>('container')
 `
+    },
+    
+    {
+        title: 'Material button Outlined',
+        content: `
+      <div class="example-button-row">
+        <button matButton="outlined">Basic</button>
+        <button matButton="outlined" disabled>Disabled</button>
+        <a matButton="outlined" href="https://www.google.com/" target="_blank">Link</a>
+      </div>
+`
     }
 ] as Template[];
