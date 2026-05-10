@@ -14,18 +14,26 @@ import CHP_TEMPLATES from "./chp.templates.js";
 import TAILWIND_TEMPLATES from "./tailwind.templates.js";
 import DASHBOARD_TEMPLATES from "./dash.templates.js"
 import CSS_TEMPLATES from "./css.templates.js";
-
+import NESTJS_TEMPLATES from "./js/nestjs.templates.js"
+import POWERSHELL_TEMPLATES from "./powershell.templates.js"
+import LINUX_TEMPLATES from "./linux.templates.js"
 
 export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'FastAPI': FASTAPI_TEMPLATES,
     'Material': MATERIAL_TEMPLATES,
     'Bootstrap': BOOTSTRAP_TEMPLATES,
     'Flutter': FLUTTER_TEMPLATES,
+    
     'Bash': BASH_TEMPLATES,
+    'PowerShell': POWERSHELL_TEMPLATES,
+    'Linux': LINUX_TEMPLATES,
+    
     'Go': GO_TEMPLATES,
     'Go Ent': GO_ENT_TEMPLATES,
     'Go-Gin': GO_GIN_TEMPLATES,
     'Vue': VUE_TEMPLATES,
+    'NestJS': NESTJS_TEMPLATES,
+    
     'PostgreSQL': POSTGRESQL_TEMPLATES,
     'HTML': HTML_TEMPLATES,
     'CHP': CHP_TEMPLATES,

@@ -61,5 +61,22 @@ func main() {
 	})
 
         `,
+    },
+    {
+        title: 'Map array',
+        content: `
+        
+   aliasModels := make([]*models.AliasModel, len(aliases))
+	for i, alias := range aliases {
+		aliasModels[i] = &models.AliasModel{
+			ID:     alias.ID,
+			Type:   alias.Type,
+			Alias:  alias.Alias,
+			ItemID: alias.ItemID,
+			FilePath: alias.FilePath,
+		}
+	}
+
+        `,
     }
 ] as Template[];
