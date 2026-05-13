@@ -26,6 +26,10 @@ export default [
     title: "CLI install packages",
     content: `flutter pub get`,
   },
+    {
+    title: "CLI install single package",
+    content: `flutter pub add package_name`,
+  },
   {
     title: "CLI install specific version",
     content: `flutter pub add package_name:1.2.3`,

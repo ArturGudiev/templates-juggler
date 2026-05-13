@@ -1,6 +1,17 @@
 import { selectObjectFromList } from "ag-utils-lib";
+import clipboard from "clipboardy";
 import { templatesService } from "./services/index.js";
 import { TEMPLATES_SET } from "./templates/index.js";
+
+async function copyToClipboard(content: string): Promise<void> {
+    try {
+        await clipboard.write(content);
+        console.log("\nTemplate copied to clipboard.\n");
+    } catch (error) {
+        console.error("\nFailed to copy template to clipboard:");
+        console.error(error);
+    }
+}
 
 async function templateSetsInteractive(): Promise<void> {
     const templateSetsNames = Object.keys(TEMPLATES_SET);
@@ -10,7 +21,9 @@ async function templateSetsInteractive(): Promise<void> {
         const template = await templatesService.selectTemplate(templates);
         if (template) {
             const res = await templatesService.getTemplateContent(template);
+            await copyToClipboard(res);
             console.log(`\n${res}\n`);
+            console.log('Press Enter to continue...');
         }
     }
 }
@@ -31,6 +44,7 @@ async function main() {
             const template = await templatesService.selectTemplate(templateSet);
             if (template) {
                 const res = await templatesService.getTemplateContent(template);
+                await copyToClipboard(res);
                 console.log(res);
             }
         } else {
