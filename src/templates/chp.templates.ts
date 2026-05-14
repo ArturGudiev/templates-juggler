@@ -23,7 +23,8 @@ fGQHG');
     {
         title: 'Get state',
         content: `
-        import '../providers/app_state_provider.dart';
+        import 'package:provider/provider.dart';
+        // import '../providers/app_state_provider.dart';
 
     final appStateProvider = context.read<AppStateProvider>();
     final state = appStateProvider.state;
@@ -47,8 +48,6 @@ fGQHG');
   class _IncidentPanelState extends State<AddIncidentPanel> {
 
     final addressesRepository = getIt<AddressesRepository>();
-
-
         `
     },
 ] as Template[];
