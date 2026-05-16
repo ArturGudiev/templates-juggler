@@ -4,8 +4,8 @@ export default [
     {
         title: 'Remove database connections',
         content: `
-    SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'chpo'
-  AND pid <> pg_backend_pid();
+        SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'chpo'
+    AND pid <> pg_backend_pid();
 `
     },
     {
@@ -38,5 +38,13 @@ export default [
     {
         title: 'Export data',
         content: `pg_dump -U postgres -d chpo > backup.sql`
+    },
+    {
+        title: 'Collate',
+        content: `SELECT datcollate, datctype FROM pg_database WHERE datname = current_database();`
+    },
+    {
+        title: 'Create database with collate',
+        content: `CREATE DATABASE chpo WITH ENCODING 'UTF8' LC_COLLATE 'Russian_Russia.1251' LC_CTYPE 'Russian_Russia.1251' TEMPLATE template0;`
     }
 ] as Template[];

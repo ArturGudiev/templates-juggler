@@ -1,4 +1,4 @@
-import { getUserInput } from "ag-utils-lib";
+import { getUserInput, selectFromList as selectItemFromList } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 
 export default [
@@ -25,6 +25,10 @@ export default [
   {
     title: "CLI install packages",
     content: `flutter pub get`,
+  },
+    {
+    title: "CLI install single package",
+    content: `flutter pub add package_name`,
   },
   {
     title: "CLI install specific version",
@@ -130,18 +134,46 @@ class UserCard extends StatelessWidget {
   },
 
   {
+    title: "Widget input parameter",
+    templateFunction: async () => {
+      const paramName = (await getUserInput("Enter parameter name (camelCase, e.g. category):")).trim();
+      const modifier = await selectItemFromList(["required", "optional"], "Select parameter modifier:");
+      if (!paramName || !modifier) {
+        return "";
+      }
+      const isRequired = modifier === "required";
+      const fieldLine = isRequired
+        ? `  final IncidentCategoryResponse ${paramName};`
+        : `  final IncidentCategoryResponse? ${paramName};`;
+      const ctorParam = isRequired
+        ? `    required this.${paramName},`
+        : `    this.${paramName},`;
+
+      return `${fieldLine}
+...
+  const IncidentOrganization({
+   ...
+${ctorParam}
+   ...
+`;
+    },
+  },
+
+  {
     title: "Stateful widget",
-    content: `
+    templateFunction: async () => {
+      const widgetName = (await getUserInput("Enter widget class name (PascalCase, e.g. CounterWidget):")).trim();
+      return `
 import 'package:flutter/material.dart';
 
-class CounterWidget extends StatefulWidget {
-  const CounterWidget({super.key});
+class ${widgetName} extends StatefulWidget {
+  const ${widgetName}({super.key});
 
   @override
-  State<CounterWidget> createState() => _CounterWidgetState();
+  State<${widgetName}> createState() => _${widgetName}State();
 }
 
-class _CounterWidgetState extends State<CounterWidget> {
+class _${widgetName}State extends State<${widgetName}> {
   // 1. Наше состояние (данные)
   int _counter = 0;
 
@@ -156,7 +188,7 @@ class _CounterWidgetState extends State<CounterWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text('Счетчик: $_counter'),
+        Text('Счетчик: \$_counter'),
         ElevatedButton(
           onPressed: _increment,
           child: const Text('Увеличить'),
@@ -165,7 +197,8 @@ class _CounterWidgetState extends State<CounterWidget> {
     );
   }
 }
-    `
+`;
+    },
   },
 
   {
