@@ -1,4 +1,5 @@
 import { selectObjectFromList } from "ag-utils-lib";
+import clipboardy from "clipboardy";
 import { templatesService } from "./services/index.js";
 import { TEMPLATES_SET } from "./templates/index.js";
 
@@ -11,6 +12,7 @@ async function templateSetsInteractive(): Promise<void> {
         if (template) {
             const res = await templatesService.getTemplateContent(template);
             console.log(`\n${res}\n`);
+            await clipboardy.write(res);
         }
     }
 }
@@ -31,7 +33,8 @@ async function main() {
             const template = await templatesService.selectTemplate(templateSet);
             if (template) {
                 const res = await templatesService.getTemplateContent(template);
-                console.log(res);
+                console.log(`\n${res}\n`);
+                await clipboardy.write(res);
             }
         } else {
             console.error(`Error: Template set "${key}" not found.`);

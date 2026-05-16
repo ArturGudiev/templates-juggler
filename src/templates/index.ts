@@ -17,6 +17,7 @@ import CSS_TEMPLATES from "./css.templates.js";
 import NESTJS_TEMPLATES from "./js/nestjs.templates.js"
 import POWERSHELL_TEMPLATES from "./powershell.templates.js"
 import LINUX_TEMPLATES from "./linux.templates.js"
+import ANGULAR_TEMPLATES from "./js/angular.templates.js"
 
 export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'FastAPI': FASTAPI_TEMPLATES,
@@ -40,5 +41,5 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'Tailwind': TAILWIND_TEMPLATES,
     'Dashbpard': DASHBOARD_TEMPLATES,
     'CSS': CSS_TEMPLATES,
-
+    'Angular': ANGULAR_TEMPLATES,
 };

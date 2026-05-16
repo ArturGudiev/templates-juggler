@@ -1,3 +1,4 @@
+import { getUserInput } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 
 export default [
@@ -10,8 +11,28 @@ export default [
     },
     {
         title: 'Curl POST with body',
+        templateFunction: async () => {
+            let url = await getUserInput('URL to invoke:');
+            let body = await getUserInput('Body:');
+            if (!url) {
+                url = 'http://localhost:3000/t2/body-request';
+            }
+            if (!body) {
+                body = '{"name":"John","age":30}';
+            }
+            return `curl ${url} -d '${body}' -H "Content-Type: application/json"`;
+        }
+    },
+    {
+        title: 'IP Tables for INPUT',
         content: `
-         curl localhost:3000/t2/body-request -d {"name":"John","age":30} -H Content-Type: application/json
+         sudo iptables -L INPUT -n --line-numbers
+        `
+    },
+    {
+        title: 'IP Tables for Docker user',
+        content: `
+         sudo iptables -L DOCKER-USER -n -v --line-numbers
         `
     }
 
