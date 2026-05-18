@@ -5,7 +5,7 @@ import { TEMPLATES_SET } from "./templates/index.js";
 
 async function copyToClipboard(content: string): Promise<void> {
     try {
-        await clipboard.write(content);
+        await clipboardy.write(content);
         console.log("\nTemplate copied to clipboard.\n");
     } catch (error) {
         console.error("\nFailed to copy template to clipboard:");
