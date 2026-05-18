@@ -136,15 +136,18 @@ class UserCard extends StatelessWidget {
   {
     title: "Widget input parameter",
     templateFunction: async () => {
+      const typeName = (
+        await getUserInput("Enter parameter Dart type (e.g. IncidentCategoryResponse):")
+      ).trim();
       const paramName = (await getUserInput("Enter parameter name (camelCase, e.g. category):")).trim();
       const modifier = await selectItemFromList(["required", "optional"], "Select parameter modifier:");
-      if (!paramName || !modifier) {
+      if (!typeName || !paramName || !modifier) {
         return "";
       }
       const isRequired = modifier === "required";
       const fieldLine = isRequired
-        ? `  final IncidentCategoryResponse ${paramName};`
-        : `  final IncidentCategoryResponse? ${paramName};`;
+        ? `  final ${typeName} ${paramName};`
+        : `  final ${typeName}? ${paramName};`;
       const ctorParam = isRequired
         ? `    required this.${paramName},`
         : `    this.${paramName},`;
