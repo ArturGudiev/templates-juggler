@@ -1,3 +1,4 @@
+import { getUserInput } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 
 export default [
@@ -46,5 +47,15 @@ export default [
     {
         title: 'Create database with collate',
         content: `CREATE DATABASE chpo WITH ENCODING 'UTF8' LC_COLLATE 'Russian_Russia.1251' LC_CTYPE 'Russian_Russia.1251' TEMPLATE template0;`
+    },
+    {
+        title: 'Function call',
+        templateFunction: async () => {
+            const funcCall = (await getUserInput("Enter function call (e.g. f(2, 42)):")).trim();
+            if (!funcCall) {
+                return "";
+            }
+            return `SELECT (${funcCall}).*;`;
+        },
     }
 ] as Template[];

@@ -65,33 +65,33 @@ export default [
   {
     title: "Button with icon ",
     content: `
-                                FilledButton.icon(
-                          onPressed: _isCreateIncidentButtonEnabled ? () {} : null,
-                          style: FilledButton.styleFrom(
-                            backgroundColor: lightCornflowerBlue,
-                            disabledBackgroundColor: lightCornflowerBlue.withValues(alpha: 0.45),
-                            foregroundColor: Colors.white,
-                            disabledForegroundColor: Colors.white.withValues(alpha: 0.65),
-                            fixedSize: const Size.fromHeight(39),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 0,
-                            ),
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            visualDensity: const VisualDensity(vertical: -2),
-                          ),
-                          label: const Text('Добавить инцидент', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-                          icon: SvgPicture.asset(
-                            'assets/images/icons/add.svg',
-                            width: 14,
-                            height: 14,
-                            fit: BoxFit.contain,
-                            colorFilter: ColorFilter.mode(
-                              _isCreateIncidentButtonEnabled ? Colors.white : Colors.white.withValues(alpha: 0.65),
-                              BlendMode.srcIn,
-                            ),
-                          ),
-                        )
+    FilledButton.icon(
+      onPressed: () {},
+      style: FilledButton.styleFrom(
+        backgroundColor: lightCornflowerBlue,
+        disabledBackgroundColor: lightCornflowerBlue.withValues(alpha: 0.45),
+        foregroundColor: Colors.white,
+        disabledForegroundColor: Colors.white.withValues(alpha: 0.65),
+        fixedSize: const Size.fromHeight(39),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 0,
+        ),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        visualDensity: const VisualDensity(vertical: -2),
+      ),
+      label: const Text('Добавить инцидент', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+      icon: SvgPicture.asset(
+        'assets/images/icons/add.svg',
+        width: 14,
+        height: 14,
+        fit: BoxFit.contain,
+        colorFilter: ColorFilter.mode(
+          _isCreateIncidentButtonEnabled ? Colors.white : Colors.white.withValues(alpha: 0.65),
+          BlendMode.srcIn,
+        ),
+      ),
+    )
 `,
   },
    {

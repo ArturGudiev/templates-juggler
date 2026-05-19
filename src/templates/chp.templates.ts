@@ -134,4 +134,8 @@ fGQHG');
     )
      `
     },
+    {
+      title: 'import provider',
+      content: `import 'package:provider/provider.dart';`
+  },
 ] as Template[];
