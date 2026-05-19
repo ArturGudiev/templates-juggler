@@ -65,33 +65,33 @@ export default [
   {
     title: "Button with icon ",
     content: `
-                                FilledButton.icon(
-                          onPressed: _isCreateIncidentButtonEnabled ? () {} : null,
-                          style: FilledButton.styleFrom(
-                            backgroundColor: lightCornflowerBlue,
-                            disabledBackgroundColor: lightCornflowerBlue.withValues(alpha: 0.45),
-                            foregroundColor: Colors.white,
-                            disabledForegroundColor: Colors.white.withValues(alpha: 0.65),
-                            fixedSize: const Size.fromHeight(39),
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 12,
-                              vertical: 0,
-                            ),
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            visualDensity: const VisualDensity(vertical: -2),
-                          ),
-                          label: const Text('Добавить инцидент', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
-                          icon: SvgPicture.asset(
-                            'assets/images/icons/add.svg',
-                            width: 14,
-                            height: 14,
-                            fit: BoxFit.contain,
-                            colorFilter: ColorFilter.mode(
-                              _isCreateIncidentButtonEnabled ? Colors.white : Colors.white.withValues(alpha: 0.65),
-                              BlendMode.srcIn,
-                            ),
-                          ),
-                        )
+    FilledButton.icon(
+      onPressed: () {},
+      style: FilledButton.styleFrom(
+        backgroundColor: lightCornflowerBlue,
+        disabledBackgroundColor: lightCornflowerBlue.withValues(alpha: 0.45),
+        foregroundColor: Colors.white,
+        disabledForegroundColor: Colors.white.withValues(alpha: 0.65),
+        fixedSize: const Size.fromHeight(39),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 12,
+          vertical: 0,
+        ),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        visualDensity: const VisualDensity(vertical: -2),
+      ),
+      label: const Text('Добавить инцидент', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
+      icon: SvgPicture.asset(
+        'assets/images/icons/add.svg',
+        width: 14,
+        height: 14,
+        fit: BoxFit.contain,
+        colorFilter: ColorFilter.mode(
+          _isCreateIncidentButtonEnabled ? Colors.white : Colors.white.withValues(alpha: 0.65),
+          BlendMode.srcIn,
+        ),
+      ),
+    )
 `,
   },
    {
@@ -136,15 +136,18 @@ class UserCard extends StatelessWidget {
   {
     title: "Widget input parameter",
     templateFunction: async () => {
+      const typeName = (
+        await getUserInput("Enter parameter Dart type (e.g. IncidentCategoryResponse):")
+      ).trim();
       const paramName = (await getUserInput("Enter parameter name (camelCase, e.g. category):")).trim();
       const modifier = await selectItemFromList(["required", "optional"], "Select parameter modifier:");
-      if (!paramName || !modifier) {
+      if (!typeName || !paramName || !modifier) {
         return "";
       }
       const isRequired = modifier === "required";
       const fieldLine = isRequired
-        ? `  final IncidentCategoryResponse ${paramName};`
-        : `  final IncidentCategoryResponse? ${paramName};`;
+        ? `  final ${typeName} ${paramName};`
+        : `  final ${typeName}? ${paramName};`;
       const ctorParam = isRequired
         ? `    required this.${paramName},`
         : `    this.${paramName},`;

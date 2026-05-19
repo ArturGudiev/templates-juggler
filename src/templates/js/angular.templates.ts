@@ -113,5 +113,46 @@ user = resource({
     });
   }
         `
+     },
+     {
+        title: '2-way binding signal from parent to child',
+        content: `
+
+        import { Component, input, output } from '@angular/core';
+
+        @Component({
+          selector: 'app-child',
+          template: \`
+            <input [value]="user().name" 
+                  (input)="onInputChange($event)" />
+          \`
+        })
+        export class ChildComponent {
+          user = input<{ name: string }>();
+          // Создаем событие для отправки наверх
+          userChange = output<{ name: string }>();
+
+          onInputChange(event: Event) {
+            const inputElement = event.target as HTMLInputElement;
+            // Генерируем событие с новым объектом
+            this.userChange.emit({ ...this.user(), name: inputElement.value });
+          }
+        }
+
+
+
+        @Component({
+          selector: 'app-parent',
+          template: \`
+            <app-child [(user)]="parentUser" />
+            
+            <p>Родитель видит: {{ parentUser().name }}</p>
+          \`
+        })
+        export class ParentComponent {
+          // Обычный изменяемый сигнал
+          parentUser = signal({ name: 'Alex' }); 
+        }
+        `
      }
 ] as Template[];

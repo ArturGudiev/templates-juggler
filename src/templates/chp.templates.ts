@@ -50,4 +50,92 @@ fGQHG');
     final addressesRepository = getIt<AddressesRepository>();
         `
     },
+    {
+        title: 'Outline button with 2 icons',
+        content: `
+        final addManagementOrgButton = OutlinedButton(
+      onPressed: () {
+        setState(() {
+          managementOrganization = const IncidentOrganization(
+            organization: null,
+            category: null,
+          );
+        });
+      },
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+        fixedSize: const Size.fromHeight(28),
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        side: BorderSide(color: const Color(0xFFD9D0FF), width: 1),
+      ),
+
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        // Чтобы кнопка не растягивалась на весь экран
+        children: [
+          SvgPicture.asset(
+            'assets/images/icons/plus.svg',
+            width: 12,
+            height: 12,
+            colorFilter: const ColorFilter.mode(
+              Color(0xFF8A76DF),
+              BlendMode.srcIn,
+            ),
+          ),
+          const SizedBox(width: 8), // Отступ между иконками
+          SvgPicture.asset(
+            'assets/images/icons/management-organization.svg',
+            width: 12,
+            height: 12,
+            colorFilter: const ColorFilter.mode(
+              Color(0xFF8A76DF),
+              BlendMode.srcIn,
+            ),
+          ),
+          const SizedBox(width: 8), // Отступ между иконками и текстом
+          const Text(
+            'Добавить управляющую организацию',
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 10,
+              color: Color(0xFF8A76DF),
+            ),
+          ),
+        ],
+      ),
+    )`
+    },
+     {
+        title: 'Outline button with 1 icon',
+        content: `
+    final addCallbackButton = OutlinedButton.icon(
+      onPressed: addCallback,
+      style: OutlinedButton.styleFrom(
+        backgroundColor: Colors.transparent,
+        foregroundColor: Color(0xFF78A4FF),
+        side: BorderSide(color: const Color(0xFFC0D5FE), width: 1),
+        fixedSize: const Size.fromHeight(32),
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        visualDensity: const VisualDensity(vertical: -2),
+      ),
+      label: const Text(
+        'Добавить звонок',
+        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+      ),
+      icon: SvgPicture.asset(
+        'assets/images/icons/phone.svg',
+        width: 12,
+        height: 12,
+        fit: BoxFit.contain,
+        colorFilter: ColorFilter.mode(lightCornflowerBlue, BlendMode.srcIn),
+      ),
+    )
+     `
+    },
+    {
+      title: 'import provider',
+      content: `import 'package:provider/provider.dart';`
+  },
 ] as Template[];
