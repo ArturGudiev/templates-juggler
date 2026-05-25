@@ -21,4 +21,8 @@ git config --global mergetool.vscode.cmd "code --wait --merge \$LOCAL \$REMOTE \
 
         `,
     },
+    {
+        title: 'Show unpushed commits',
+        content: 'git log origin/main..HEAD --oneline',
+    },
 ] as Template[];
