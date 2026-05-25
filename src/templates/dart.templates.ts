@@ -19,5 +19,15 @@ export default [
         }
         `;
         },
+    }, 
+    {
+        title: 'sentinel',
+        content: `
+        const Object _sentinel = Object();
+        const Object sentinel = _sentinel;
+
+        
+
+        `
     }
 ] as Template[];
