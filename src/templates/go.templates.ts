@@ -78,5 +78,11 @@ func main() {
 	}
 
         `,
+    },
+    {
+        title: 'Create array of fixed size',
+        content: `
+        	orders := make([]int, len(filteredRelations))
+        `
     }
 ] as Template[];

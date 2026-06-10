@@ -248,6 +248,18 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
       ),
     )
     `,
+  },
+  {
+    title: 'Create freezed class from json',
+    content: `
+        final addressBase = AddressBase.fromJson(
+      <String, Object?>{
+          "value": "г Владикавказ, ул Куйбышева, д 134 к 4",
+          ...
+          "unparsed_parts": null,
+        },
+    )
+    `
   }
 
 

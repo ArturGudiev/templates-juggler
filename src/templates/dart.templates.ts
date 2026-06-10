@@ -26,5 +26,26 @@ export default [
         const Object _sentinel = Object();
         const Object sentinel = _sentinel;
         `
+    },
+    {
+        title: 'Parse response and convert to freezed class',
+        content: `
+            // single object 
+            final responseData = jsonDecode(response.body);
+            return LoginToken.fromJson(rawData)
+
+            // list of objects 
+            final responseData = jsonDecode(response.body) as List;
+            return responseData.map((e) => LoginToken.fromJson(e)).toList();
+        `
+    },
+    {
+        title: 'Flutter Text with dynamic content',
+        templateFunction: async () => {
+            const content = await getUserInput('Enter content for text:');
+            return `Text('${content}');`},
+    },
+
+        `
     }
 ] as Template[];
