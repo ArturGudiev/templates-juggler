@@ -45,7 +45,4 @@ export default [
             const content = await getUserInput('Enter content for text:');
             return `Text('${content}');`},
     },
-
-        `
-    }
 ] as Template[];
