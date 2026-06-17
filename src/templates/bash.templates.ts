@@ -25,8 +25,9 @@ export default [
         else
             echo "Переменная пустая (null)"
         fi
-
- 
-    `
+    `},
+    {
+        title: 'Read for user input',
+        content: `echo -n "Press [Enter] to continue..."; read1`,
     }
 ] as Template[];

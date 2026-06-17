@@ -1,6 +1,7 @@
 import { Template } from "src/types/template.interface.js";
 import BOOTSTRAP_TEMPLATES from "./bootstrap.tempaltes.js";
 import FLUTTER_TEMPLATES from "./flutter.templates.js";
+import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter-style.templates.js";
 import BASH_TEMPLATES from "./bash.templates.js";
 import VUE_TEMPLATES from "./vue.tempaltes.js";
 import GO_TEMPLATES from "./go.templates.js";
@@ -26,7 +27,7 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'Material': MATERIAL_TEMPLATES,
     'Bootstrap': BOOTSTRAP_TEMPLATES,
     'Flutter': FLUTTER_TEMPLATES,
-    
+    'Flutter Style': FLUTTER_STYLE_TEMPLATES,
     'Bash': BASH_TEMPLATES,
     'PowerShell': POWERSHELL_TEMPLATES,
     'Linux': LINUX_TEMPLATES,
