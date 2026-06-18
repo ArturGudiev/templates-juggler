@@ -51,5 +51,23 @@ export default [
     ),
     
     `
+  },
+  {
+    title: 'TextField: font properties',
+    content: `
+    TextField(
+      // Styles the input text typed by the user
+      style: TextStyle(
+        fontFamily: 'Roboto',       // Sets the font family
+        fontSize: 18.0,             // Sets the font size
+        fontWeight: FontWeight.bold, // Sets the font weight (e.g., bold, w600)
+        ...
+      ),
+      decoration: InputDecoration(
+        labelText: 'Enter Name',
+        ...
+      ),
+    )
+    `,
   }
 ] as Template[];

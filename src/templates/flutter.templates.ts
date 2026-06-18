@@ -262,5 +262,4 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
     `
   }
 
-
 ] as Template[];

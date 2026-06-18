@@ -16,7 +16,7 @@ async function copyToClipboard(content: string): Promise<void> {
 async function templateSetsInteractive(): Promise<void> {
     const templateSetsNames = Object.keys(TEMPLATES_SET);
     const obj = await selectObjectFromList(templateSetsNames);
-    if (obj) {
+if (obj) {
         const templates = TEMPLATES_SET[obj.value];
         const template = await templatesService.selectTemplate(templates);
         if (template) {

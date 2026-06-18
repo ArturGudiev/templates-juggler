@@ -29,5 +29,21 @@ export default [
     {
         title: 'Read for user input',
         content: `echo -n "Press [Enter] to continue..."; read1`,
+    }, 
+    {
+        title: 'Switch case',
+        content: `
+case "$ПЕРЕМЕННАЯ" in
+    шаблон1)
+        # Команды, если совпало с шаблон1
+        ;;
+    шаблон2)
+        # Команды, если совпало с шаблон2
+        ;;
+    *)
+        # Default case: команды для всего остального
+        ;;
+esac
+        `,
     }
 ] as Template[];

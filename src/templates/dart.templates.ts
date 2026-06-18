@@ -45,4 +45,12 @@ export default [
             const content = await getUserInput('Enter content for text:');
             return `Text('${content}');`},
     },
+    {
+        title: 'ForEach analog in Dart',
+        content: `
+        fruits.forEach((fruit) {
+            print(fruit);
+        });
+        `
+    }
 ] as Template[];

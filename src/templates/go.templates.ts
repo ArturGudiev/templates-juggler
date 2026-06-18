@@ -84,5 +84,16 @@ func main() {
         content: `
         	orders := make([]int, len(filteredRelations))
         `
+    }, 
+    {
+        title: 'Make field in struct (generated for frontend) required',
+        content: `
+    
+    type LongTaskProgressFull struct {
+        ID          int                           \`json:"id" binding:"required"\`
+        Name        string                        \`json:"name" binding:"required"\`
+    }
+
+    `
     }
 ] as Template[];

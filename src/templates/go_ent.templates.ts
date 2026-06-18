@@ -31,7 +31,6 @@ func (RepetitiveTaskExecution) Edges() []ent.Edge {
 			Field("repetitive_task_id"),
 	}
 }
-
 `       
     }
 ] as Template[];
