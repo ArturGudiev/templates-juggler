@@ -149,4 +149,40 @@ fGQHG');
     }
     `
   },
+  {
+    title: '-- backend set auth token 15 seconds --',
+    content: `
+     def _set_auth_tokens(response: Response, phone_number: str) -> tuple[str, str]:
+    """Выдаёт access/refresh JWT и записывает их в HTTP-only cookies (как при login)."""
+    access_token_expires = timedelta(seconds=10)
+    access_token = create_access_token(
+        data={"sub": phone_number}, expires_delta=access_token_expires
+    )
+
+    refresh_token_expires = timedelta(seconds=25)
+    refresh_token = create_refresh_token(
+        data={"sub": phone_number}, expires_delta=refresh_token_expires
+    )
+
+    response.set_cookie(
+        key="access_token",
+        value=access_token,
+        # max_age=settings.ACCESS_TOKEN_EXPIRE_MINUTES * 60,
+        max_age=5,
+        httponly=True,
+        secure=_COOKIE_SECURE,
+        samesite="lax",
+    )
+    response.set_cookie(
+        key="refresh_token",
+        value=refresh_token,
+        # max_age=settings.REFRESH_TOKEN_EXPIRE_DAYS * 24 * 60 * 60,
+        max_age=15,
+        httponly=True,
+        secure=_COOKIE_SECURE,
+        samesite="lax",
+    )
+    return access_token, refresh_token
+    `,
+  }
 ] as Template[];

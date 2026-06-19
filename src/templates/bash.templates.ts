@@ -31,6 +31,29 @@ export default [
         content: `echo -n "Press [Enter] to continue..."; read1`,
     }, 
     {
+        title: 'Function without parameters',
+        content: `
+
+        greet() {
+            echo "Hello, World!"
+        }
+
+        greet
+        `,
+    },
+     {
+        title: 'Function with parameters',
+        content: `
+    show_user_info() {
+        echo "First Name: $1"
+        echo "Last Name: $2"
+        echo "All Arguments: $@" # $@ represents all passed items
+    }
+
+    show_user_info "John" "Doe"
+        `,
+    },
+    {
         title: 'Switch case',
         content: `
 case "$ПЕРЕМЕННАЯ" in

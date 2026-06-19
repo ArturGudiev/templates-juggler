@@ -32,5 +32,16 @@ func (RepetitiveTaskExecution) Edges() []ent.Edge {
 	}
 }
 `       
-    }
+    },
+	{
+		title: 'Make query with inner join ',
+		content: `
+		submissions, err := r.client.LongTaskProgressSubmission.Query().
+			Where(longtaskprogresssubmission.HasLongTaskProgressWith(
+				longtaskprogress.LongTaskIDEQ(longTaskID),
+			)).
+			Order(longtaskprogresssubmission.ByID(sql.OrderDesc())).
+			All(ctx)
+		`,
+	}
 ] as Template[];

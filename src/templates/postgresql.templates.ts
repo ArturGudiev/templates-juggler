@@ -57,5 +57,9 @@ export default [
             }
             return `SELECT (${funcCall}).*;`;
         },
+    }, 
+    {
+        title: 'PSQL: execute query from terminal ',
+        content: 'psql -U postgres -d chpo -c "SELECT * FROM users;"'
     }
 ] as Template[];
