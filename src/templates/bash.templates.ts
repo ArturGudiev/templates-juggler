@@ -68,5 +68,5 @@ case "$ПЕРЕМЕННАЯ" in
         ;;
 esac
         `,
-    }
+    }   
 ] as Template[];
