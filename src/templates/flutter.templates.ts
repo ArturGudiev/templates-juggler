@@ -260,6 +260,15 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
         },
     )
     `
+  },
+  {
+    title: 'Add on click handler to container',
+    content: `
+   GestureDetector(
+    onTap: () { debugPrint('Мои заявления tapped'); },
+    child: Container(...),
+  ),
+    `
   }
 
 ] as Template[];

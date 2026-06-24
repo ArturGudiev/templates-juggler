@@ -21,6 +21,7 @@ import GIT_TEMPLATES from "./git.templates.js"
 import LINUX_TEMPLATES from "./linux.templates.js"
 import ANGULAR_TEMPLATES from "./js/angular.templates.js"
 import DART_TEMPLATES from "./dart.templates.js"
+import DATA_TEMPLATES from "./data.templates.js"
 
 export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'FastAPI': FASTAPI_TEMPLATES,
@@ -32,6 +33,7 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'PowerShell': POWERSHELL_TEMPLATES,
     'Linux': LINUX_TEMPLATES,
     'Dart': DART_TEMPLATES,
+    'Data': DATA_TEMPLATES,
     
     'Go': GO_TEMPLATES,
     'Go Ent': GO_ENT_TEMPLATES,
@@ -47,5 +49,4 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'CSS': CSS_TEMPLATES,
     'Angular': ANGULAR_TEMPLATES,
     'Git': GIT_TEMPLATES,
-
 };
