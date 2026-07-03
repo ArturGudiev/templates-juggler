@@ -95,5 +95,14 @@ func main() {
     }
 
     `
+    },
+    {
+        title: 'DateTimes: add and compare',
+        content: `
+    validUntil := latestCheck.DateTime.AddDate(0, 0, *requirement.OnceInDays)
+	if !validUntil.After(now) {
+		return nil
+	}
+        `
     }
 ] as Template[];
