@@ -118,6 +118,30 @@ export default [
       )),
       ...
     `
+  },
+  {
+    title: 'DataRow: add background color',
+    content: `
+    DataRow(
+      color: Colors.white,
+      color: WidgetStateProperty.all(
+        const Color(0xFFF1F3F6),
+      ),
+      ...
+    )
+    `
+  },
+  {
+    title: 'Add property conditionally',
+    content: `
+    DataRow(
+      color: org.rejection != null
+          ? WidgetStateProperty.all(
+              const Color(0xFFF1F3F6),
+            )
+          : null,
+                      
+    `
   }
   
 ] as Template[];

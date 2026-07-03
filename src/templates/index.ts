@@ -22,6 +22,7 @@ import LINUX_TEMPLATES from "./linux.templates.js"
 import ANGULAR_TEMPLATES from "./js/angular.templates.js"
 import DART_TEMPLATES from "./dart.templates.js"
 import DATA_TEMPLATES from "./data.templates.js"
+import DOCKER_TEMPLATES from "./docker.templates.js"
 
 export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'FastAPI': FASTAPI_TEMPLATES,
@@ -34,6 +35,7 @@ export const TEMPLATES_SET: {[key: string]: Template[]} = {
     'Linux': LINUX_TEMPLATES,
     'Dart': DART_TEMPLATES,
     'Data': DATA_TEMPLATES,
+    'Docker': DOCKER_TEMPLATES,
     
     'Go': GO_TEMPLATES,
     'Go Ent': GO_ENT_TEMPLATES,
