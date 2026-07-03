@@ -4,10 +4,13 @@ import { Template } from "../types/template.interface.js";
 export default [
     {
         title: 'Remove database connections',
-        content: `
-        SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'chpo'
-    AND pid <> pg_backend_pid();
-`
+        templateFunction: async () => {
+            const dbName = (await getUserInput("Enter database name:")).trim();
+            if (!dbName) {
+                return "";
+            }
+            return `SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '${dbName}' AND pid <> pg_backend_pid();`;
+        }
     },
     {
         title: 'List of databases',
@@ -61,5 +64,9 @@ export default [
     {
         title: 'PSQL: execute query from terminal ',
         content: 'psql -U postgres -d chpo -c "SELECT * FROM users;"'
+    },
+    {
+        title: 'Run script for specific db',
+        content: 'psql -d имя_базы_данных -f путь/к/файлу.sql'
     }
 ] as Template[];

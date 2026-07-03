@@ -2,6 +2,7 @@ import { selectObjectFromList } from "ag-utils-lib";
 import clipboardy from "clipboardy";
 import { templatesService } from "./services/index.js";
 import { TEMPLATES_SET } from "./templates/index.js";
+import { printTemplateContent } from "./utils/print-highlighted.js";
 
 async function copyToClipboard(content: string): Promise<void> {
     try {
@@ -22,8 +23,7 @@ if (obj) {
         if (template) {
             const res = await templatesService.getTemplateContent(template);
             await copyToClipboard(res);
-            console.log(`\n${res}\n`);
-            await clipboardy.write(res);
+            printTemplateContent(res, template.syntaxHighlightLanguage);
         }
     }
 }
@@ -44,8 +44,8 @@ async function main() {
             const template = await templatesService.selectTemplate(templateSet);
             if (template) {
                 const res = await templatesService.getTemplateContent(template);
-                console.log(`\n${res}\n`);
-                await clipboardy.write(res);
+                await copyToClipboard(res);
+                printTemplateContent(res, template.syntaxHighlightLanguage);
             }
         } else {
             console.error(`Error: Template set "${key}" not found.`);

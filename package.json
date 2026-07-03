@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "ag-utils-lib": "^1.0.44",
+    "cli-highlight": "^2.1.11",
     "clipboardy": "^5.3.1"
   }
 }

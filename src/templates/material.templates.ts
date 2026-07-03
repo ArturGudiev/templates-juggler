@@ -40,5 +40,18 @@ export default [
         <a matButton="outlined" href="https://www.google.com/" target="_blank">Link</a>
       </div>
 `
+    },
+    {
+      title: 'make table column width smaller',
+      content: `
+       <ng-container matColumnDef="delete">
+       ....
+      </ng-container>
+
+      .mat-column-delete
+        width: 2rem
+        text-align: center
+
+      `
     }
 ] as Template[];
