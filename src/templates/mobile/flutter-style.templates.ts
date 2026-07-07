@@ -142,6 +142,11 @@ export default [
           : null,
                       
     `
+  },
+  {
+    title: 'Get keyboard height in logical pixels (flutter pixels)',
+    content: `
+        final keyboardValue = MediaQuery.viewInsetsOf(context).bottom;
+    `
   }
-  
 ] as Template[];
