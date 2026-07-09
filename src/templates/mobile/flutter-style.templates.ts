@@ -148,5 +148,11 @@ export default [
     content: `
         final keyboardValue = MediaQuery.viewInsetsOf(context).bottom;
     `
+  },
+  {
+    title: 'Get screen width',
+    content: `
+    final screenWidth = MediaQuery.of(context).size.width;
+    `
   }
 ] as Template[];
