@@ -1,4 +1,4 @@
-import { Template } from "src/types/template.interface.js";
+import { Template, TemplateNode } from "src/types/template.interface.js";
 import BOOTSTRAP_TEMPLATES from "./bootstrap.tempaltes.js";
 import FLUTTER_TEMPLATES from "./flutter.templates.js";
 import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter-style.templates.js";
@@ -26,33 +26,141 @@ import DOCKER_TEMPLATES from "./docker.templates.js"
 import SSH_TEMPLATES from "./network/ssh.templates.js"
 import SWIFT_TEMPLATES from "./swift.templates.js"
 
-export const TEMPLATES_SET: {[key: string]: Template[]} = {
-    'FastAPI': FASTAPI_TEMPLATES,
-    'Material': MATERIAL_TEMPLATES,
-    'Bootstrap': BOOTSTRAP_TEMPLATES,
-    'Flutter': FLUTTER_TEMPLATES,
-    'Flutter Style': FLUTTER_STYLE_TEMPLATES,
+export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
+    'Angular': ANGULAR_TEMPLATES,
     'Bash': BASH_TEMPLATES,
-    'PowerShell': POWERSHELL_TEMPLATES,
-    'Linux': LINUX_TEMPLATES,
+    'Bootstrap': BOOTSTRAP_TEMPLATES,
+    'CHP': CHP_TEMPLATES,
+    'CSS': CSS_TEMPLATES,
+    'Dashbpard': DASHBOARD_TEMPLATES,
     'Dart': DART_TEMPLATES,
     'Data': DATA_TEMPLATES,
     'Docker': DOCKER_TEMPLATES,
-    'SSH': SSH_TEMPLATES,
-    'Swift': SWIFT_TEMPLATES,
-    
+    'FastAPI': FASTAPI_TEMPLATES,
+    'Flutter': FLUTTER_TEMPLATES,
+    'Flutter Style': FLUTTER_STYLE_TEMPLATES,
+    'Git': GIT_TEMPLATES,
     'Go': GO_TEMPLATES,
     'Go Ent': GO_ENT_TEMPLATES,
     'Go-Gin': GO_GIN_TEMPLATES,
-    'Vue': VUE_TEMPLATES,
-    'NestJS': NESTJS_TEMPLATES,
-    
-    'PostgreSQL': POSTGRESQL_TEMPLATES,
     'HTML': HTML_TEMPLATES,
-    'CHP': CHP_TEMPLATES,
+    'Linux': LINUX_TEMPLATES,
+    'Material': MATERIAL_TEMPLATES,
+    'NestJS': NESTJS_TEMPLATES,
+    'PostgreSQL': POSTGRESQL_TEMPLATES,
+    'PowerShell': POWERSHELL_TEMPLATES,
+    'SSH': SSH_TEMPLATES,
+    'Swift': SWIFT_TEMPLATES,
     'Tailwind': TAILWIND_TEMPLATES,
-    'Dashbpard': DASHBOARD_TEMPLATES,
-    'CSS': CSS_TEMPLATES,
-    'Angular': ANGULAR_TEMPLATES,
-    'Git': GIT_TEMPLATES,
+    'Vue': VUE_TEMPLATES,
+};
+
+export const TEMPLATES_ROOT_NODE: TemplateNode = {
+    name: 'Tempaltes Root',
+    children: [
+        {
+            name: 'Angular',
+            templates: ANGULAR_TEMPLATES,
+        },
+        {
+            name: 'Bash',
+            templates: BASH_TEMPLATES,
+        },
+        {
+            name: 'Bootstrap',
+            templates: BOOTSTRAP_TEMPLATES,
+        },
+        {
+            name: 'CHP',
+            templates: CHP_TEMPLATES,
+        },
+        {
+            name: 'CSS',
+            templates: CSS_TEMPLATES,
+        },
+        {
+            name: 'Dashbpard',
+            templates: DASHBOARD_TEMPLATES,
+        },
+        {
+            name: 'Dart',
+            templates: DART_TEMPLATES,
+        },
+        {
+            name: 'Data',
+            templates: DATA_TEMPLATES,
+        },
+        {
+            name: 'Docker',
+            templates: DOCKER_TEMPLATES,
+        },
+        {
+            name: 'FastAPI',
+            templates: FASTAPI_TEMPLATES,
+        },
+        {
+            name: 'Flutter',
+            templates: FLUTTER_TEMPLATES,
+        },
+        {
+            name: 'Flutter Style',
+            templates: FLUTTER_STYLE_TEMPLATES,
+        },
+        {
+            name: 'Git',
+            templates: GIT_TEMPLATES,
+        },
+        {
+            name: 'Go',
+            templates: GO_TEMPLATES,
+        },
+        {
+            name: 'Go Ent',
+            templates: GO_ENT_TEMPLATES,
+        },
+        {
+            name: 'Go-Gin',
+            templates: GO_GIN_TEMPLATES,
+        },
+        {
+            name: 'HTML',
+            templates: HTML_TEMPLATES,
+        },
+        {
+            name: 'Linux',
+            templates: LINUX_TEMPLATES,
+        },
+        {
+            name: 'Material',
+            templates: MATERIAL_TEMPLATES,
+        },
+        {
+            name: 'NestJS',
+            templates: NESTJS_TEMPLATES,
+        },
+        {
+            name: 'PostgreSQL',
+            templates: POSTGRESQL_TEMPLATES,
+        },
+        {
+            name: 'PowerShell',
+            templates: POWERSHELL_TEMPLATES,
+        },
+        {
+            name: 'SSH',
+            templates: SSH_TEMPLATES,
+        },
+        {
+            name: 'Swift',
+            templates: SWIFT_TEMPLATES,
+        },
+        {
+            name: 'Tailwind',
+            templates: TAILWIND_TEMPLATES,
+        },
+        {
+            name: 'Vue',
+            templates: VUE_TEMPLATES,
+        },
+    ],
 };

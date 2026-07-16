@@ -37,7 +37,7 @@ export default [
         echo "Hello, $username!"
 
         # in zsh 
-        read "?Enter commit message: " message
+        1read "?Enter commit message: " message
         [[ -n "$message" ]] || { echo "Commit message required" >&2; exit 1; }
       
         `,

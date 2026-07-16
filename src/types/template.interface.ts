@@ -1,7 +1,3 @@
-export interface TemplateNode {
-    children?: TemplateNode[];
-}
-
 export interface Template {
     title: string;
     content?: string;
@@ -11,3 +7,9 @@ export interface Template {
     children?: Template[];
 }
 
+export interface TemplateNode {
+    templates?: Template[]
+    children?: TemplateNode[]
+    aliases?: string[]
+    name: string
+}
