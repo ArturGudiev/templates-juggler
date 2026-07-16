@@ -31,6 +31,13 @@ export default [
         content: `echo -n "Press [Enter] to continue..."; read1`,
     }, 
     {
+        title: 'Get user input',
+        content: `
+        read -p "Enter your name: " username
+        echo "Hello, $username!"
+        `,
+    }, 
+    {
         title: 'Function without parameters',
         content: `
 
