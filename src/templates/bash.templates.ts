@@ -35,6 +35,11 @@ export default [
         content: `
         read -p "Enter your name: " username
         echo "Hello, $username!"
+
+        # in zsh 
+        read "?Enter commit message: " message
+        [[ -n "$message" ]] || { echo "Commit message required" >&2; exit 1; }
+      
         `,
     }, 
     {
