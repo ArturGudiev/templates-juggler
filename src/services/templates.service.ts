@@ -1,7 +1,11 @@
 import { getJSONFileContent, selectIndexFromList, selectObjectFromList } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 
-function getTemplateContent(template: Template) {
+async function getTemplateContent(template: Template): Promise<string> {
+    if (template.templateFunction) {
+        return template.templateFunction();
+    }
+
     if (template.content) {
         return template.content;
     }

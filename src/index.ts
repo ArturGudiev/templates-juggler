@@ -9,7 +9,7 @@ async function templateSetsInteractive(): Promise<void> {
         const templates = TEMPLATES_SET[obj.value];
         const template = await templatesService.selectTemplate(templates);
         if (template) {
-            console.log(`\n${templatesService.getTemplateContent(template)}\n`);
+            console.log(`\n${await templatesService.getTemplateContent(template)}\n`);
         }
     }
 }
@@ -29,7 +29,7 @@ async function main() {
         if (templateSet) {
             const template = await templatesService.selectTemplate(templateSet);
             if (template) {
-                console.log(templatesService.getTemplateContent(template));
+                console.log(await templatesService.getTemplateContent(template));
             }
         } else {
             console.error(`Error: Template set "${key}" not found.`);
