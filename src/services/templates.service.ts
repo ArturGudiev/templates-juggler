@@ -2,16 +2,19 @@ import { getJSONFileContent, selectIndexFromList, selectObjectFromList } from "a
 import { Template } from "../types/template.interface.js";
 
 async function getTemplateContent(template: Template): Promise<string> {
-    if (template.templateFunction) {
-        return template.templateFunction();
-    }
-
     if (template.content) {
         return template.content;
     }
 
     if (template.fileContent) {
         // TODO 
+    }
+
+    if (template.templateFunction) {
+        const res = await template.templateFunction();
+        if (res) {
+            return res;
+        }
     }
     return '';
 }

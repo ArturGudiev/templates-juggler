@@ -47,5 +47,62 @@ func main() {
 }
         
         `
+    },
+    {
+        title: 'Sort array',
+        content: `
+        
+    sort.Slice(entries, func(i, j int) bool {
+		di, dj := entries[i].IsDir(), entries[j].IsDir()
+		if di != dj {
+			return di
+		}
+		return entries[i].Name() < entries[j].Name()
+	})
+
+        `,
+    },
+    {
+        title: 'Map array',
+        content: `
+        
+   aliasModels := make([]*models.AliasModel, len(aliases))
+	for i, alias := range aliases {
+		aliasModels[i] = &models.AliasModel{
+			ID:     alias.ID,
+			Type:   alias.Type,
+			Alias:  alias.Alias,
+			ItemID: alias.ItemID,
+			FilePath: alias.FilePath,
+		}
+	}
+
+        `,
+    },
+    {
+        title: 'Create array of fixed size',
+        content: `
+        	orders := make([]int, len(filteredRelations))
+        `
+    }, 
+    {
+        title: 'Make field in struct (generated for frontend) required',
+        content: `
+    
+    type LongTaskProgressFull struct {
+        ID          int                           \`json:"id" binding:"required"\`
+        Name        string                        \`json:"name" binding:"required"\`
+    }
+
+    `
+    },
+    {
+        title: 'DateTimes: add and compare',
+        content: `
+    validUntil := latestCheck.DateTime.AddDate(0, 0, *requirement.OnceInDays)
+	if !validUntil.After(now) {
+		return nil
+	}
+        `
     }
 ] as Template[];

@@ -35,8 +35,27 @@ func (h *Handler) GetLogMessages(c *gin.Context) {
 	Page          *int                  \`form:"page"\`
 	Global        *bool                 \`form:"global"\`
 }
-
-        
         `
-    }
+    },
+	{
+		title: 'Cast body to the type',
+		content: `
+	var req AddLongTaskSubmissionRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(400, gin.H{"error": err.Error()})
+		return
+	}
+		`
+	},
+	{
+		title: 'Get route parameter (integer)',
+		content: `
+		idParam := c.Param("id")
+		id, err := strconv.Atoi(idParam)
+		if err != nil {
+			c.JSON(400, gin.H{"error": "Invalid epic ID"})
+			return
+		}
+		`
+	}
 ] as Template[];

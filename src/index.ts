@@ -1,41 +1,40 @@
-import { selectObjectFromList } from "ag-utils-lib";
-import { templatesService } from "./services/index.js";
-import { TEMPLATES_SET } from "./templates/index.js";
-
-async function templateSetsInteractive(): Promise<void> {
-    const templateSetsNames = Object.keys(TEMPLATES_SET);
-    const obj = await selectObjectFromList(templateSetsNames);
-    if (obj) {
-        const templates = TEMPLATES_SET[obj.value];
-        const template = await templatesService.selectTemplate(templates);
-        if (template) {
-            console.log(`\n${await templatesService.getTemplateContent(template)}\n`);
-        }
-    }
-}
-
+import { ArgumentParser } from "argparse";
+import { templatesNodeInteractive } from "./services/templates-node-interactive.service.js";
+import { TEMPLATES_ROOT_NODE } from "./templates/index.js";
+import { collectNodeNames, findTemplateNode } from "./utils/template-node.utils.js";
 
 async function main() {
-    const args = process.argv.slice(2);
-    
-    if (args.length === 0) {
-        // No arguments - run interactive mode
-        await templateSetsInteractive();
+    const parser = new ArgumentParser({
+        description: "A tool for getting a list of common templates",
+    });
+
+    parser.add_argument("templatesNode", {
+        nargs: "?",
+        help: `Template node name or alias. Available: ${collectNodeNames(TEMPLATES_ROOT_NODE).join(", ")}`,
+    });
+
+    parser.add_argument("--templates-node", {
+        dest: "templatesNodeFlag",
+        help: "Template node name or alias (named form of the positional argument)",
+    });
+
+    const args = parser.parse_args();
+    const templatesNode = args.templatesNodeFlag ?? args.templatesNode;
+
+    if (!templatesNode) {
+        await templatesNodeInteractive(TEMPLATES_ROOT_NODE);
+        return;
+    }
+
+    const node = findTemplateNode(TEMPLATES_ROOT_NODE, templatesNode);
+
+    if (node) {
+        await templatesNodeInteractive(node);
     } else {
-        // Argument provided - use as key for TEMPALTES_SET
-        const key = args[0];
-        const templateSet = TEMPLATES_SET[key];
-        
-        if (templateSet) {
-            const template = await templatesService.selectTemplate(templateSet);
-            if (template) {
-                console.log(await templatesService.getTemplateContent(template));
-            }
-        } else {
-            console.error(`Error: Template set "${key}" not found.`);
-            console.log(`Available template sets: ${Object.keys(TEMPLATES_SET).join(', ')}`);
-        }
+        console.error(`Error: Template node "${templatesNode}" not found.`);
+        console.log(`Available template nodes: ${collectNodeNames(TEMPLATES_ROOT_NODE).join(", ")}`);
+        process.exit(1);
     }
 }
 
-main()
+main();
