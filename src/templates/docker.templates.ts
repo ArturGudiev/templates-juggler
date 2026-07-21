@@ -6,6 +6,10 @@ export default [
     content: 'docker exec -it container_name bash',
    },
    {
+      title: 'execute bash command inside container',
+      content: 'docker exec -it container_name bash -c "command"',
+     },
+   {
       title: 'import db dump inside docker container',
       content: 'docker exec -i container_name psql -U postgres -d database_name < backup.sql',
    },
