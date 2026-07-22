@@ -4,6 +4,7 @@ import { Template } from "../types/template.interface.js";
 export default [
     {
         title: 'Remove database connections',
+        syntaxHighlightLanguage: 'sql',
         templateFunction: async () => {
             const dbName = (await getUserInput("Enter database name:")).trim();
             if (!dbName) {
