@@ -25,6 +25,7 @@ import DATA_TEMPLATES from "./data.templates.js"
 import DOCKER_TEMPLATES from "./docker.templates.js"
 import SSH_TEMPLATES from "./network/ssh.templates.js"
 import SWIFT_TEMPLATES from "./swift.templates.js"
+import NETWORK_TEMPLATES from "./network.templates.js"
 
 export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Angular': ANGULAR_TEMPLATES,
@@ -133,6 +134,10 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'Material',
             templates: MATERIAL_TEMPLATES,
+        },
+        {
+            name: 'Network',
+            templates: NETWORK_TEMPLATES,
         },
         {
             name: 'NestJS',
