@@ -44,7 +44,7 @@ function printCommands(hasParent: boolean): void {
     if (hasParent) {
         console.log("  u        - go to parent");
     }
-    console.log("  x        - exit");
+    console.log("  x, q     - exit");
 }
 
 function parseIndex(value: string | undefined, max: number): number | null {
@@ -137,13 +137,22 @@ async function handleNodeCommand(
 export async function templatesNodeInteractive(
     node: TemplateNode,
     parent: TemplateNode | null = null,
+    options: { selectTemplateOnStart?: boolean } = {},
 ): Promise<void> {
+    let shouldSelectTemplateOnStart = options.selectTemplateOnStart === true;
+
     while (true) {
         clearScreen();
         printNodeInfo(node);
         printChildren(node.children);
         printTemplates(node.templates);
         printCommands(parent !== null);
+
+        if (shouldSelectTemplateOnStart) {
+            shouldSelectTemplateOnStart = false;
+            await handleTemplateCommand(node.templates, undefined);
+            continue;
+        }
 
         const line = await getUserInput(">", false);
         const parts = line.split(/\s+/).filter(Boolean);
@@ -154,7 +163,8 @@ export async function templatesNodeInteractive(
 
         const command = parts[0].toLowerCase();
 
-        if (command === "x") {
+        if (command === "x" || command === "q") {
+            clearScreen();
             process.exit(0);
         }
 

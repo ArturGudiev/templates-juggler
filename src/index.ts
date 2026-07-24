@@ -29,7 +29,7 @@ async function main() {
     const node = findTemplateNode(TEMPLATES_ROOT_NODE, templatesNode);
 
     if (node) {
-        await templatesNodeInteractive(node);
+        await templatesNodeInteractive(node, null, { selectTemplateOnStart: true });
     } else {
         console.error(`Error: Template node "${templatesNode}" not found.`);
         console.log(`Available template nodes: ${collectNodeNames(TEMPLATES_ROOT_NODE).join(", ")}`);
