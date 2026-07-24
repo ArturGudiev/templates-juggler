@@ -306,5 +306,11 @@ fGQHG');
     "unparsed_parts": null
   }
     `,
-  }
+  },
+  {
+    title: 'Chp Docker: run alembic on backend',
+    content: `
+    docker exec -it backend alembic upgrade head
+    `
+  },
 ] as Template[];
