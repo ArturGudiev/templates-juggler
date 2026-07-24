@@ -310,7 +310,7 @@ fGQHG');
   {
     title: 'Chp Docker: run alembic on backend',
     content: `
-    docker exec -it backend alembic upgrade head
+    docker exec -it chp-dev-backend alembic upgrade head
     `
   },
 ] as Template[];

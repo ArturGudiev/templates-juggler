@@ -52,5 +52,13 @@ export default [
             print(fruit);
         });
         `
+    },
+    {
+        title: 'Collection literal with for',
+        content: `
+    _downloadFutures = {
+      for (final file in _fileMetas) file.id: _filesApi.downloadFile(file),
+    };
+        `
     }
 ] as Template[];
