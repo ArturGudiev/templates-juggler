@@ -55,4 +55,8 @@ git config --global mergetool.vscode.cmd "code --wait --merge \$LOCAL \$REMOTE \
         title: 'Merge one branch2 into branch1',
         content: `git merge branch2 branch1`
     },
+    {
+        title: 'Rename last local commit',
+        content: `git commit --amend -m "new message"`
+    }
 ] as Template[];
