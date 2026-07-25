@@ -26,5 +26,12 @@ docker compose down
 # 2. Recreate and start the container with the new .env values
 docker compose up -d
       `,
+   },
+   {
+      title: 'free disk space',
+      content: `
+docker system prune -a --volumes # remove unused images, containers
+docker builder prune -a    # clear cache 
+      `,
    }
 ] as Template[];
