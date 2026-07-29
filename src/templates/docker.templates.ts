@@ -1,9 +1,16 @@
+import { getUserInput } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 
 export default [
    {
     title: 'go inside container',
-    content: 'docker exec -it container_name bash',
+    templateFunction: async () => {
+      let containerName = await getUserInput("Container name");
+      if (!containerName) {
+         containerName = "container_name";
+      }
+      return `docker exec -it ${containerName} bash`;
+    },
    },
    {
       title: 'execute bash command inside container',
