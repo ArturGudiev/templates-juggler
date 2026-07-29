@@ -28,7 +28,7 @@ docker compose up -d
       `,
    },
    {
-      title: 'free disk space',
+      title: 'free (clean) disk space',
       content: `
 docker system prune -a --volumes # remove unused images, containers
 docker builder prune -a    # clear cache 
