@@ -18,11 +18,34 @@ export default [
 `
     },
     {
+        title: 'font-weight',
+        content: `
+            font-thin - 100
+            font-extralight - 200
+            font-light - 300
+            font-normal - 400
+            font-medium - 500
+            font-semibold - 600
+            font-bold - 700
+            font-extrabold - 800    
+            font-black - 900
+        `
+    },
+    {
+        title: 'Font Style',
+        content: `
+            italic
+            normal
+            bold
+            extrabold
+            black
+        `
+    },
+    {
         title: 'Flex --- center',
         content: `
       flex items-center
       flex items-baseline
-
 `
     },
     {
@@ -32,6 +55,29 @@ export default [
             pb-[17px]
             pl-[17px]
             pr-[17px]
+        `
+    },
+    {
+        title: 'Font: Letter Spacing',
+        content: `
+            tracking-[0.16em]
+            tracking-[-0.16em]
+        `
+    },
+    {
+        title: 'Text color',
+        content: `
+            text-[#FFD683]
+
+            text-red-500
+            text-green-500
+            text-blue-500
+            text-yellow-500
+            text-purple-500
+            text-orange-500
+            text-pink-500
+
+
         `
     }
 ] as Template[];
