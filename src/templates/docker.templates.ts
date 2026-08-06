@@ -21,6 +21,14 @@ export default [
       content: 'docker exec -i container_name psql -U postgres -d database_name < backup.sql',
    },
    {
+      title: 'import db (to local host db) from docker container on remote host',
+      content: `
+
+      ssh user@remote_host "docker exec -i remote_container_name pg_dump -U postgres -d chpo" | psql -U postgres -d local_db_name
+
+      `,
+   },
+   {
       title: 'build docker container (compose) ',
       content: 'docker compose up -d --build',
    },

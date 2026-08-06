@@ -24,5 +24,14 @@ export default [
       flex items-baseline
 
 `
+    },
+    {
+        title: 'Padding',
+        content: `
+            pt-[17px]
+            pb-[17px]
+            pl-[17px]
+            pr-[17px]
+        `
     }
 ] as Template[];

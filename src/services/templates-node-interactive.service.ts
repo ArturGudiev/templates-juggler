@@ -158,6 +158,11 @@ export async function templatesNodeInteractive(
         const parts = line.split(/\s+/).filter(Boolean);
 
         if (!parts.length) {
+            if (node.templates?.length) {
+                await handleTemplateCommand(node.templates, undefined);
+            } else if (node.children?.length) {
+                await handleNodeCommand(node.children, undefined, node);
+            }
             continue;
         }
 

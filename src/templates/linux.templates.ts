@@ -34,6 +34,10 @@ export default [
         content: `
          sudo iptables -L DOCKER-USER -n -v --line-numbers
         `
+    }, 
+    {
+        title: 'Get space of the directory',
+        content: `du -sh /path/to/directory`,
     }
 
 ] as Template[];

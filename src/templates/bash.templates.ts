@@ -80,5 +80,11 @@ case "$ПЕРЕМЕННАЯ" in
         ;;
 esac
         `,
+    }, 
+    {
+        title: 'Execute command on remote host',
+        content: `
+        ssh user@remote-host "command"
+        `,
     }   
 ] as Template[];
