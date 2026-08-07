@@ -28,5 +28,11 @@ export default [
     background: linear-gradient(direction, color-stop1, color-stop2, ...);
     
 `
+    },
+    {
+        title: 'Box shadow',
+        content: `
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); // X Y blur spread color
+        `
     }
 ] as Template[];

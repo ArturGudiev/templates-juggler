@@ -76,8 +76,13 @@ export default [
             text-purple-500
             text-orange-500
             text-pink-500
-
-
+        `
+    },
+    {
+        title: 'Border radius',
+        content: `
+        rounded-sm rounded-md rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full
+        rounded-[40px]
         `
     }
 ] as Template[];
