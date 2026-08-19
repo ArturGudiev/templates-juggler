@@ -1,5 +1,5 @@
 import { getUserInput } from "ag-utils-lib";
-import { Template } from "../types/template.interface.js";
+import { Template } from "../../types/template.interface.js";
 
 export default [
     {

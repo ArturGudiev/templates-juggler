@@ -84,5 +84,20 @@ export default [
         rounded-sm rounded-md rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full
         rounded-[40px]
         `
+    }, 
+    {
+        title: 'Border: example of 1px solid red',
+        content: `
+        border border-solid border-red-500
+
+        border-[1px] border-solid border-red-500
+        border-[1px] border-solid border-[#ff0000]
+        `
+    }, 
+    {
+        title: 'Grid: Display in center',
+        content: `
+        grid place-items-center
+        `
     }
 ] as Template[];

@@ -72,9 +72,6 @@ export default [
     },
     {
         title: 'Filter timestamp with timezone by date', 
-        // content: `
-        // SELECT * FROM tasks WHERE done_date_time::date = '2026-07-13';
-        // `,
         templateFunction: async () => {
             const date = (await getUserInput("Enter date (e.g. 2026-07-13):")).trim();
             if (!date) {

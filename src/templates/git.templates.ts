@@ -58,5 +58,16 @@ git config --global mergetool.vscode.cmd "code --wait --merge \$LOCAL \$REMOTE \
     {
         title: 'Rename last local commit',
         content: `git commit --amend -m "new message"`
-    }
+    },
+    {
+        title: 'Squash unite 2 local commits',
+        content: `
+            git rebase -i HEAD~2
+            git commit -m "Unite 2 local commits"
+        `
+    },
+    {
+        title: 'Set upstream automatically',
+        content: 'git config --global push.autoSetupRemote true'
+    },
 ] as Template[];

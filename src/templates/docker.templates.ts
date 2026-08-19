@@ -23,9 +23,17 @@ export default [
    {
       title: 'import db (to local host db) from docker container on remote host',
       content: `
-
       ssh user@remote_host "docker exec -i remote_container_name pg_dump -U postgres -d chpo" | psql -U postgres -d local_db_name
+      `,
+   },
+   {
+      title: 'import db (to remote host docker container db) from local host db',
+      content: `
+# 1. Dump local DB and copy to remote
+pg_dump -U postgres -d local_db_name > backup.sql && scp backup.sql user@remote_host:/tmp/backup.sql
 
+# 2. Apply dump inside remote docker container
+ssh user@remote_host "cat /tmp/backup.sql | docker exec -i remote_container_name psql -U postgres -d remote_db_name"
       `,
    },
    {
@@ -48,5 +56,9 @@ docker compose up -d
 docker system prune -a --volumes # remove unused images, containers
 docker builder prune -a    # clear cache 
       `,
+   },
+   {
+      title: 'Docker compose: stop project',
+      content: 'docker compose down',
    }
 ] as Template[];

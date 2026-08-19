@@ -11,7 +11,9 @@ import MATERIAL_TEMPLATES from "./material.templates.js";
 import FASTAPI_TEMPLATES from "./fastapi.templates.js";
 import POSTGRESQL_TEMPLATES from "./postgresql.templates.js";
 import HTML_TEMPLATES from "./html.templates.js";
-import CHP_TEMPLATES from "./chp.templates.js";
+import CHP_TEMPLATES from "./projects/chp.templates.js";
+import CHP_FRONTEND_TEMPLATES from "./projects/chp-frontend.templates.js";
+import ZALI_TEMPLATES from "./projects/zali.templates.js";
 import TAILWIND_TEMPLATES from "./tailwind.templates.js";
 import DASHBOARD_TEMPLATES from "./dash.templates.js"
 import CSS_TEMPLATES from "./css.templates.js";
@@ -26,6 +28,7 @@ import DOCKER_TEMPLATES from "./docker.templates.js"
 import SSH_TEMPLATES from "./network/ssh.templates.js"
 import SWIFT_TEMPLATES from "./swift.templates.js"
 import NETWORK_TEMPLATES from "./network.templates.js"
+import PYTHON_TEMPLATES from "./python.templates.js"
 
 export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Angular': ANGULAR_TEMPLATES,
@@ -48,6 +51,7 @@ export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Linux': LINUX_TEMPLATES,
     'Material': MATERIAL_TEMPLATES,
     'NestJS': NESTJS_TEMPLATES,
+    'Python': PYTHON_TEMPLATES,
     'PostgreSQL': POSTGRESQL_TEMPLATES,
     'PowerShell': POWERSHELL_TEMPLATES,
     'SSH': SSH_TEMPLATES,
@@ -72,8 +76,21 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
             templates: BOOTSTRAP_TEMPLATES,
         },
         {
-            name: 'CHP',
-            templates: CHP_TEMPLATES,
+            name: 'Projects',
+            children: [
+                {
+                    name: 'Zali',
+                    templates: ZALI_TEMPLATES,
+                },
+                {
+                    name: 'CHP',
+                    templates: CHP_TEMPLATES,
+                },
+                {
+                    name: 'CHP Frontend',
+                    templates: CHP_FRONTEND_TEMPLATES,
+                },
+            ],
         },
         {
             name: 'CSS',
@@ -144,6 +161,10 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
             templates: NESTJS_TEMPLATES,
         },
         {
+            name: "Python",
+            templates: PYTHON_TEMPLATES,
+        },
+        {
             name: 'PostgreSQL',
             templates: POSTGRESQL_TEMPLATES,
         },
@@ -166,6 +187,6 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'Vue',
             templates: VUE_TEMPLATES,
-        },
+        }        
     ],
 };
