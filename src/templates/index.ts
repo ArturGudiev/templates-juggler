@@ -183,6 +183,7 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'Tailwind',
             templates: TAILWIND_TEMPLATES,
+            aliases: ['tail'],
         },
         {
             name: 'Vue',
