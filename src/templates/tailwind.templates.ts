@@ -1,6 +1,7 @@
 import { getUserInput, selectFromList } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 import { selectSeveralFromList } from "../utils/select-several.temp.js";
+import { clearScreen } from "src/utils/cli.utils.js";
 
 export default [
     {
@@ -82,6 +83,7 @@ export default [
     {
         title: 'Styles interactive',
         templateFunction: async () => {
+            clearScreen();
             const styleInteractiveFunctions = {
                 'color': async () => {
                     const color = (await getUserInput("Enter color (e.g. #FFD683):")).trim();
