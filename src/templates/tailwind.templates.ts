@@ -85,7 +85,7 @@ export default [
         templateFunction: async () => {
             clearScreen();
             const styleInteractiveFunctions = {
-                'color': async () => {
+                'text color': async () => {
                     const color = (await getUserInput("Enter color (e.g. #FFD683):")).trim();
                     if (!color) {
                         return "";
@@ -115,6 +115,13 @@ export default [
                     };
                     const selected = await selectFromList(Object.keys(fontWeights), 'Select font weight:');
                     return selected ? fontWeights[selected] : '';
+                },
+                'font-size': async () => {
+                    const fontSize = (await getUserInput("Enter font size (e.g. 17px):")).trim();
+                    if (!fontSize) {
+                        return "";
+                    }
+                    return `text-[${fontSize}]`;
                 },
             };
             const styles = Object.keys(styleInteractiveFunctions);
