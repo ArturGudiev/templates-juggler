@@ -1,4 +1,4 @@
-import { getUserInput } from "ag-utils-lib";
+import { getUserInput, selectFromList } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 import { selectSeveralFromList } from "../utils/select-several.temp.js";
 
@@ -89,6 +89,21 @@ export default [
                         return "";
                     }
                     return `text-[${color}]`;
+                },
+                'font-weight': async () => {
+                    const fontWeights: Record<string, string> = {
+                        '100 thin': 'font-thin',
+                        '200 extralight': 'font-extralight',
+                        '300 light': 'font-light',
+                        '400 normal': 'font-normal',
+                        '500 medium': 'font-medium',
+                        '600 semibold': 'font-semibold',
+                        '700 bold': 'font-bold',
+                        '800 extrabold': 'font-extrabold',
+                        '900 black': 'font-black',
+                    };
+                    const selected = await selectFromList(Object.keys(fontWeights), 'Select font weight:');
+                    return selected ? fontWeights[selected] : '';
                 },
             };
             const styles = Object.keys(styleInteractiveFunctions);
