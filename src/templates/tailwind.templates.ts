@@ -1,7 +1,7 @@
 import { getUserInput, selectFromList } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
 import { selectSeveralFromList } from "../utils/select-several.temp.js";
-import { clearScreen } from "src/utils/cli.utils.js";
+import { clearScreen } from "../utils/cli.utils.js";
 
 export default [
     {
@@ -122,6 +122,18 @@ export default [
                         return "";
                     }
                     return `text-[${fontSize}]`;
+                },
+                'display': async () => {
+                    const selected = await selectFromList(['block', 'flex'], 'Select display:');
+                    return selected ?? '';
+                },
+                'justify-content (Main axis)': async () => {
+                    const justifyConetnt = selectFromList(['start', 'end', 'center', 'between', 'around', 'evenly'], 'Select justify content:');    
+                    return justifyConetnt ?? '';
+                },
+                'align-items (Cross axis)': async () => {
+                    const alignItems = selectFromList(['start', 'end', 'center', 'between', 'around', 'evenly'], 'Select align items:');
+                    return alignItems ?? '';
                 },
             };
             const styles = Object.keys(styleInteractiveFunctions);
