@@ -65,6 +65,19 @@ export default [
         `
     },
     {
+        title: 'Font: Combined',
+        content: `
+            Font (poppins) --- font-poppins
+            
+            weight (semibold) --- font-semibold italic --- font-italic
+            100 (thin), 200 (extralight), 300 (light), 400 (normal), 500 (medium), 600 (semibold), 700 (bold), 800 (extrabold), 900 (black)
+
+            font size (17px) --- text-[17px]
+
+            font color #FFD683 --- text-[#FFD683]
+            `
+    },
+    {
         title: 'Text color',
         content: `
             text-[#FFD683]
