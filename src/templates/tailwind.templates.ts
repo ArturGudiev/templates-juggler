@@ -88,7 +88,16 @@ export default [
                     if (!color) {
                         return "";
                     }
-                    return `text-[${color}]`;
+                    if (color.startsWith('#')) {
+                        return `text-[${color}]`;
+                    }
+                    if (color.startsWith('rgb(')) {
+                        return `text-[${color}]`;
+                    }
+                    if (color.startsWith('hsl(')) {
+                        return `text-[${color}]`;
+                    }
+                    return `text-${color}`;
                 },
                 'font-weight': async () => {
                     const fontWeights: Record<string, string> = {
