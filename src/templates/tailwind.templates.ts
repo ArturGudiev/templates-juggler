@@ -1,4 +1,6 @@
+import { getUserInput } from "ag-utils-lib";
 import { Template } from "../types/template.interface.js";
+import { selectSeveralFromList } from "../utils/select-several.temp.js";
 
 export default [
     {
@@ -76,6 +78,37 @@ export default [
 
             font color #FFD683 --- text-[#FFD683]
             `
+    },
+    {
+        title: 'Styles interactive',
+        templateFunction: async () => {
+            const styleInteractiveFunctions = {
+                'color': async () => {
+                    const color = (await getUserInput("Enter color (e.g. #FFD683):")).trim();
+                    if (!color) {
+                        return "";
+                    }
+                    return `text-[${color}]`;
+                },
+            };
+            const styles = Object.keys(styleInteractiveFunctions);
+            const selectedStyles = await selectSeveralFromList(styles, "Select styles:");
+
+            if (!selectedStyles?.length) {
+                return "";
+            }
+
+            const parts: string[] = [];
+            for (const style of selectedStyles) {
+                const styleFn = styleInteractiveFunctions[style as keyof typeof styleInteractiveFunctions];
+                const part = await styleFn();
+                if (part) {
+                    parts.push(part);
+                }
+            }
+
+            return parts.join(" ");
+        },
     },
     {
         title: 'Text color',
