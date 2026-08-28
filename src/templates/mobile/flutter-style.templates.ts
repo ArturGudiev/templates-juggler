@@ -1,4 +1,4 @@
-import { getUserInput } from "ag-utils-lib";
+import { getUserInput, selectFromList } from "ag-utils-lib";
 import { Template } from "../../types/template.interface.js";
 import { clearScreen } from "../../utils/cli.utils.js";
 import { selectSeveralFromList } from "../../utils/select-several.temp.js";
@@ -9,6 +9,21 @@ export default [
     templateFunction: async () => {
       clearScreen();
       const styleInteractiveFunctions = {
+        'font-weight': async () => {
+          const fontWeights: Record<string, string> = {
+            '100 thin': 'fontWeight: FontWeight.w100,',
+            '200 extralight': 'fontWeight: FontWeight.w200,',
+            '300 light': 'fontWeight: FontWeight.w300,',
+            '400 normal': 'fontWeight: FontWeight.w400,',
+            '500 medium': 'fontWeight: FontWeight.w500,',
+            '600 semibold': 'fontWeight: FontWeight.w600,',
+            '700 bold': 'fontWeight: FontWeight.w700,',
+            '800 extrabold': 'fontWeight: FontWeight.w800,',
+            '900 black': 'fontWeight: FontWeight.w900,',
+          };
+          const selected = await selectFromList(Object.keys(fontWeights), 'Select font weight:');
+          return selected ? fontWeights[selected] : '';
+        },
         'font-size': async () => {
           const fontSize = (await getUserInput("Enter font size (e.g. 17):")).trim();
           if (!fontSize) {
@@ -59,14 +74,72 @@ export default [
         return "";
       }
 
-      const textContent = (await getUserInput("Enter text content:")).trim() || "Text";
+      return `style: TextStyle(
+  ${parts.join('\n  ')}
+),`;
+    },
+  },
+  {
+    title: 'Container style interactive',
+    templateFunction: async () => {
+      clearScreen();
 
-      return `Text(
-  '${textContent}',
-  style: TextStyle(
-    ${parts.join('\n    ')}
+      const formatColor = (color: string): string => {
+        if (color.startsWith('#')) {
+          const hex = color.slice(1);
+          return `Color(0xFF${hex.toUpperCase()})`;
+        }
+        if (color.startsWith('Color(') || color.startsWith('Colors.')) {
+          return color;
+        }
+        return `Colors.${color}`;
+      };
+
+      const borderValues: { width?: string; color?: string } = {};
+      const styleInteractiveFunctions = {
+        'border width': async () => {
+          const width = (await getUserInput("Enter border width (e.g. 1):")).trim();
+          if (width) {
+            borderValues.width = width;
+          }
+        },
+        'border color': async () => {
+          const color = (await getUserInput("Enter border color (e.g. #FFD683 or Colors.red):")).trim();
+          if (color) {
+            borderValues.color = formatColor(color);
+          }
+        },
+      };
+
+      const styles = Object.keys(styleInteractiveFunctions);
+      const selectedStyles = await selectSeveralFromList(styles, "Select styles:");
+
+      if (!selectedStyles?.length) {
+        return "";
+      }
+
+      for (const style of selectedStyles) {
+        const styleFn = styleInteractiveFunctions[style as keyof typeof styleInteractiveFunctions];
+        await styleFn();
+      }
+
+      const borderParts: string[] = [];
+      if (borderValues.width) {
+        borderParts.push(`width: ${borderValues.width}`);
+      }
+      if (borderValues.color) {
+        borderParts.push(`color: ${borderValues.color}`);
+      }
+
+      if (!borderParts.length) {
+        return "";
+      }
+
+      return `decoration: BoxDecoration(
+  border: Border.all(
+    ${borderParts.join(',\n    ')},
   ),
-)`;
+),`;
     },
   },
   { 
