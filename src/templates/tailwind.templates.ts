@@ -128,12 +128,27 @@ export default [
                     return selected ?? '';
                 },
                 'justify-content (Main axis)': async () => {
-                    const justifyConetnt = selectFromList(['start', 'end', 'center', 'between', 'around', 'evenly'], 'Select justify content:');    
-                    return justifyConetnt ?? '';
+                    const options: Record<string, string> = {
+                        'start': 'justify-start',
+                        'end': 'justify-end',
+                        'center': 'justify-center',
+                        'between': 'justify-between',
+                        'around': 'justify-around',
+                        'evenly': 'justify-evenly',
+                    };
+                    const selected = await selectFromList(Object.keys(options), 'Select justify content:');
+                    return selected ? options[selected] : '';
                 },
                 'align-items (Cross axis)': async () => {
-                    const alignItems = selectFromList(['start', 'end', 'center', 'between', 'around', 'evenly'], 'Select align items:');
-                    return alignItems ?? '';
+                    const options: Record<string, string> = {
+                        'start': 'items-start',
+                        'end': 'items-end',
+                        'center': 'items-center',
+                        'baseline': 'items-baseline',
+                        'stretch': 'items-stretch',
+                    };
+                    const selected = await selectFromList(Object.keys(options), 'Select align items:');
+                    return selected ? options[selected] : '';
                 },
             };
             const styles = Object.keys(styleInteractiveFunctions);

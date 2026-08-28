@@ -1,6 +1,74 @@
+import { getUserInput } from "ag-utils-lib";
 import { Template } from "../../types/template.interface.js";
+import { clearScreen } from "../../utils/cli.utils.js";
+import { selectSeveralFromList } from "../../utils/select-several.temp.js";
 
 export default [
+  {
+    title: 'Text style interactive',
+    templateFunction: async () => {
+      clearScreen();
+      const styleInteractiveFunctions = {
+        'font-size': async () => {
+          const fontSize = (await getUserInput("Enter font size (e.g. 17):")).trim();
+          if (!fontSize) {
+            return "";
+          }
+          return `fontSize: ${fontSize},`;
+        },
+        'text color': async () => {
+          const color = (await getUserInput("Enter color (e.g. #FFD683 or Colors.red):")).trim();
+          if (!color) {
+            return "";
+          }
+          if (color.startsWith('#')) {
+            const hex = color.slice(1);
+            return `color: Color(0xFF${hex.toUpperCase()}),`;
+          }
+          if (color.startsWith('Color(') || color.startsWith('Colors.')) {
+            return `color: ${color},`;
+          }
+          return `color: Colors.${color},`;
+        },
+        'letter-spacing': async () => {
+          const spacing = (await getUserInput("Enter letter spacing (e.g. 0.16):")).trim();
+          if (!spacing) {
+            return "";
+          }
+          return `letterSpacing: ${spacing},`;
+        },
+      };
+
+      const styles = Object.keys(styleInteractiveFunctions);
+      const selectedStyles = await selectSeveralFromList(styles, "Select styles:");
+
+      if (!selectedStyles?.length) {
+        return "";
+      }
+
+      const parts: string[] = [];
+      for (const style of selectedStyles) {
+        const styleFn = styleInteractiveFunctions[style as keyof typeof styleInteractiveFunctions];
+        const part = await styleFn();
+        if (part) {
+          parts.push(part);
+        }
+      }
+
+      if (!parts.length) {
+        return "";
+      }
+
+      const textContent = (await getUserInput("Enter text content:")).trim() || "Text";
+
+      return `Text(
+  '${textContent}',
+  style: TextStyle(
+    ${parts.join('\n    ')}
+  ),
+)`;
+    },
+  },
   { 
     title: "Make Center element not occupy the wole width",
     content: `
