@@ -79,5 +79,14 @@ export default [
             }
             return `SELECT * FROM tasks WHERE done_date_time::date = '${date}';`;
         },
+    },
+    {
+        title: 'Update id to sync db table',
+        content: `
+        SELECT
+            'definitions' AS table_name,
+            (SELECT MAX(id) FROM definitions) AS max_id,
+            (SELECT last_value FROM definitions_id_seq) AS sequence_last_value;
+        `,
     }
 ] as Template[];
