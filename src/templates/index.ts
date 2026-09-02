@@ -123,6 +123,7 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'Flutter Style',
             templates: FLUTTER_STYLE_TEMPLATES,
+            aliases: ['flutter-style'],
         },
         {
             name: 'Git',
