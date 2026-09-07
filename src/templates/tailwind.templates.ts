@@ -127,6 +127,16 @@ export default [
                     const selected = await selectFromList(['block', 'flex'], 'Select display:');
                     return selected ?? '';
                 },
+                'border': async () => {
+                    const color = (await getUserInput("Enter border color (e.g. red or #FFD683):")).trim();
+                    if (!color) {
+                        return "";
+                    }
+                    if (color.startsWith('#') || color.startsWith('rgb(') || color.startsWith('hsl(')) {
+                        return `border border-solid border-[${color}]`;
+                    }
+                    return `border border-solid border-${color}-500`;
+                },
                 'justify-content (Main axis)': async () => {
                     const options: Record<string, string> = {
                         'start': 'justify-start',
