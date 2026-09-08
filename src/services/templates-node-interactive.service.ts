@@ -74,6 +74,7 @@ async function copyToClipboard(content: string): Promise<void> {
 async function displayTemplate(template: Template): Promise<void> {
     const content = await templatesService.getTemplateContent(template);
     await copyToClipboard(content);
+    console.log(`\nTemplate: ${template.title}`);
     printTemplateContent(content, template.syntaxHighlightLanguage);
     await waitForUserInput();
 }
