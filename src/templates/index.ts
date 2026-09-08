@@ -30,6 +30,7 @@ import SSH_TEMPLATES from "./network/ssh.templates.js"
 import SWIFT_TEMPLATES from "./swift.templates.js"
 import NETWORK_TEMPLATES from "./network.templates.js"
 import PYTHON_TEMPLATES from "./python.templates.js"
+import NEXTJS_TEMPLATES from "./frontend/nextjs/nextjs-templates.templates.js"
 
 export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Angular': ANGULAR_TEMPLATES,
@@ -52,6 +53,7 @@ export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Linux': LINUX_TEMPLATES,
     'Material': MATERIAL_TEMPLATES,
     'NestJS': NESTJS_TEMPLATES,
+    'Next.js': NEXTJS_TEMPLATES,
     'Python': PYTHON_TEMPLATES,
     'PostgreSQL': POSTGRESQL_TEMPLATES,
     'PowerShell': POWERSHELL_TEMPLATES,
@@ -116,6 +118,16 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'FastAPI',
             templates: FASTAPI_TEMPLATES,
+        },
+        {
+            name: 'Frontend',
+            children: [
+                {
+                    name: 'Next.js',
+                    templates: NEXTJS_TEMPLATES,
+                    aliases: ['nextjs', 'next'],
+                },
+            ],
         },
         {
             name: 'Flutter',

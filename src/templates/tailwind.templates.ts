@@ -184,7 +184,6 @@ export default [
         title: 'Text color',
         content: `
             text-[#FFD683]
-
             text-red-500
             text-green-500
             text-blue-500
