@@ -1,9 +1,11 @@
 import { getUserInput, selectIndexFromList, waitForUserInput } from "ag-utils-lib";
 import chalk from "chalk";
 import clipboardy from "clipboardy";
+import { TEMPLATES_ROOT_NODE } from "../templates/index.js";
 import { Template, TemplateNode } from "../types/template.interface.js";
 import { clearScreen } from "../utils/cli.utils.js";
 import { printTemplateContent } from "../utils/print-highlighted.js";
+import { findTemplateNode } from "../utils/template-node.utils.js";
 import templatesService from "./templates.service.js";
 
 function printNodeInfo(node: TemplateNode): void {
@@ -37,13 +39,12 @@ function printTemplates(templates: Template[] | undefined): void {
     });
 }
 
-function printCommands(hasParent: boolean): void {
+function printCommands(): void {
     console.log("\nCommands:");
     console.log("  n [num]  - select child node");
     console.log("  t [num]  - select template");
-    if (hasParent) {
-        console.log("  u        - go to parent");
-    }
+    console.log("  nav <alias> - jump to node by alias/name");
+    console.log("  u        - go to parent / top level");
     console.log("  x, q     - exit");
 }
 
@@ -134,6 +135,30 @@ async function handleNodeCommand(
     }
 }
 
+async function handleNavCommand(
+    aliasArg: string | undefined,
+    currentNode: TemplateNode,
+): Promise<void> {
+    if (!aliasArg) {
+        console.log("\nUsage: nav <alias>");
+        await waitForUserInput();
+        return;
+    }
+
+    const found = findTemplateNode(TEMPLATES_ROOT_NODE, aliasArg);
+    if (!found) {
+        console.log(`\nTemplate node "${aliasArg}" not found.`);
+        await waitForUserInput();
+        return;
+    }
+
+    if (found === currentNode) {
+        return;
+    }
+
+    await templatesNodeInteractive(found, currentNode);
+}
+
 export async function templatesNodeInteractive(
     node: TemplateNode,
     parent: TemplateNode | null = null,
@@ -146,7 +171,7 @@ export async function templatesNodeInteractive(
         printNodeInfo(node);
         printChildren(node.children);
         printTemplates(node.templates);
-        printCommands(parent !== null);
+        printCommands();
 
         if (shouldSelectTemplateOnStart) {
             shouldSelectTemplateOnStart = false;
@@ -174,12 +199,14 @@ export async function templatesNodeInteractive(
         }
 
         if (command === "u") {
-            if (!parent) {
-                console.log("\nAlready at root.");
-                await waitForUserInput();
-                continue;
+            if (parent) {
+                return;
             }
-            return;
+
+            if (node !== TEMPLATES_ROOT_NODE) {
+                await templatesNodeInteractive(TEMPLATES_ROOT_NODE);
+            }
+            continue;
         }
 
         if (command === "n") {
@@ -189,6 +216,11 @@ export async function templatesNodeInteractive(
 
         if (command === "t") {
             await handleTemplateCommand(node.templates, parts[1]);
+            continue;
+        }
+
+        if (command === "nav") {
+            await handleNavCommand(parts[1], node);
             continue;
         }
     }

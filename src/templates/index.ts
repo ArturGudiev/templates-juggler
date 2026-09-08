@@ -187,6 +187,7 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'PostgreSQL',
             templates: POSTGRESQL_TEMPLATES,
+            aliases: ['postgres', 'postgresql', 'psql'],
         },
         {
             name: 'PowerShell',
