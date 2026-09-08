@@ -88,5 +88,28 @@ export default [
             (SELECT MAX(id) FROM definitions) AS max_id,
             (SELECT last_value FROM definitions_id_seq) AS sequence_last_value;
         `,
-    }
+    },
+    {
+        title: 'Switch database names',
+        tempalteFunction: async () => {
+            const oldDbName = (await getUserInput("Enter old database name:")).trim();
+            if (!oldDbName) {
+                return "";
+            }
+            const newDbName = (await getUserInput("Enter new database name:")).trim();
+            if (!newDbName) {
+                return "";
+            }
+            const tempSuffix = '_tempdbname';
+            const tempDbName = `${newDbName}${tempSuffix}`;
+            return `
+            SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '${oldDbName}' AND pid <> pg_backend_pid();
+            SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = '${newDbName}' AND pid <> pg_backend_pid();
+            
+            ALTER DATABASE ${oldDbName} RENAME TO ${tempDbName};
+            ALTER DATABASE ${newDbName} RENAME TO ${oldDbName};
+            ALTER DATABASE ${tempDbName} RENAME TO ${newDbName};
+            `;
+        },
+    },
 ] as Template[];
