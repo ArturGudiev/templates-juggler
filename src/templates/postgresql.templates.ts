@@ -91,7 +91,7 @@ export default [
     },
     {
         title: 'Switch database names',
-        tempalteFunction: async () => {
+        templateFunction: async () => {
             const oldDbName = (await getUserInput("Enter old database name:")).trim();
             if (!oldDbName) {
                 return "";
@@ -112,4 +112,6 @@ export default [
             `;
         },
     },
+
+
 ] as Template[];
