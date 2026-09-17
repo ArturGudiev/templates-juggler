@@ -268,7 +268,18 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
     onTap: () { debugPrint('Мои заявления tapped'); },
     child: Container(...),
   ),
+  `
+  },
+  {
+    title: 'Add ellipsos to text (if its too long and will overflow)',
+    content: `
+    Expanded(
+      child: Text(
+        'Отказал сервер обработки данных123123123 сервер обрабьотки данных, наруш...',
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+    ),
     `
   }
-
 ] as Template[];

@@ -88,6 +88,7 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
                 {
                     name: 'CHP',
                     templates: CHP_TEMPLATES,
+                    aliases: ['chp'],
                 },
                 {
                     name: 'CHP Frontend',
