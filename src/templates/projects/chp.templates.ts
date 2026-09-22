@@ -312,5 +312,4 @@ fGQHG');
     content: `
     docker exec -it chp-dev-backend alembic upgrade head
     `
-  },
 ] as Template[];

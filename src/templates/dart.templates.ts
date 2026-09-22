@@ -60,5 +60,12 @@ export default [
       for (final file in _fileMetas) file.id: _filesApi.downloadFile(file),
     };
         `
+    },
+    {
+        title: 'Create random integer in range from A to B',
+        content: `
+        final random = Random();
+        final randomNumber = random.nextInt(B - A + 1) + A;
+        `
     }
 ] as Template[];

@@ -295,5 +295,11 @@ export default [
     content: `
     final screenWidth = MediaQuery.of(context).size.width;
     `
+  }, 
+  {
+    title: 'Wrap text (int several lines) when ',
+    content: `
+      wrap it with Expanded
+    `
   }
 ] as Template[];
