@@ -86,5 +86,5 @@ esac
         content: `
         ssh user@remote-host "command"
         `,
-    }   
+    }
 ] as Template[];
