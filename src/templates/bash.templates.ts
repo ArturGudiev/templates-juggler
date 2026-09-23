@@ -86,5 +86,11 @@ esac
         content: `
         ssh user@remote-host "command"
         `,
+    },
+    {
+        title: 'create alias in profile',
+        content: `
+        alias имя_алиаса="оригинальная команда"
+        `
     }
 ] as Template[];

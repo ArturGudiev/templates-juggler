@@ -67,5 +67,11 @@ export default [
         final random = Random();
         final randomNumber = random.nextInt(B - A + 1) + A;
         `
+    }, 
+    {
+        title: 'String interpolation',
+        content: `
+        ' my string and $myVariable'
+        `
     }
 ] as Template[];
