@@ -73,5 +73,13 @@ export default [
         content: `
         ' my string and $myVariable'
         `
+    },
+    {
+        title: 'Async: setTimeout(..., 0) analog',
+        content: `
+        Timer.run(() {
+            print('Выполнится асинхронно при первой возможности');
+        });
+        `,
     }
 ] as Template[];

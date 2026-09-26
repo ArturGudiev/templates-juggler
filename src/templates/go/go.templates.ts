@@ -1,4 +1,4 @@
-import { Template } from "../types/template.interface.js";
+import { Template } from "../../types/template.interface.js";
 
 export default [
     {
@@ -102,7 +102,45 @@ func main() {
     validUntil := latestCheck.DateTime.AddDate(0, 0, *requirement.OnceInDays)
 	if !validUntil.After(now) {
 		return nil
-	}
+	}`
+    },
+    {
+        title: 'Read cli args in main function',
+        content: `
+        flag.Parse()    
+        arg := flag.Arg(0)
+        fmt.Println(arg)
+        `,
+    },
+    {
+        title: 'Constructor',
+        content: `
+        // Функция-конструктор. По конвенции называется New + имя структуры
+        func NewUser(name string, age int) *User {
+            // Здесь можно выполнить валидацию данных перед созданием
+            if age < 0 {
+                age = 0 
+            }
+            
+            return &User{
+                Name: name,
+                Age:  age,
+            }
+        }
+
+        func main() {
+            // Использование конструктора
+            user := NewUser("Иван", 25)
+            fmt.Printf("Имя: %s, Возраст: %d\n", user.Name, user.Age)
+        }
+        `
+    },
+    {
+        title: 'Create root module',
+        content: `
+        
+        in root folder,
+        go mod init github.com/arturgudiev/go-hw
         `
     }
 ] as Template[];
