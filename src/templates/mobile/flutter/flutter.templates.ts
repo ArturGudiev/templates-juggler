@@ -1,5 +1,5 @@
 import { getUserInput, selectFromList as selectItemFromList } from "ag-utils-lib";
-import { Template } from "../types/template.interface.js";
+import { Template } from "../../../types/template.interface.js";
 
 export default [
   { title: "Filter requests", content: "t:json" },

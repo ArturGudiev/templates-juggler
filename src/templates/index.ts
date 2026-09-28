@@ -1,9 +1,10 @@
 import { Template, TemplateNode } from "src/types/template.interface.js";
 import BOOTSTRAP_TEMPLATES from "./bootstrap.tempaltes.js";
-import FLUTTER_TEMPLATES from "./flutter.templates.js";
-import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter-style.templates.js";
-import FLUTTER_CONFIGURATION_TEMPLATES from "./mobile/flutter-configuration.templates.js";
-import FLUTTER_HTTP_CLIENT_TEMPLATES from "./mobile/flutter-http-client.templates.js";
+import FLUTTER_TEMPLATES from "./mobile/flutter/flutter.templates.js";
+import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter/flutter-style.templates.js";
+import FLUTTER_CONFIGURATION_TEMPLATES from "./mobile/flutter/flutter-configuration.templates.js";
+import FLUTTER_HTTP_CLIENT_TEMPLATES from "./mobile/flutter/flutter-http-client.templates.js";
+import FLUTTER_MATERIAL_TEMPLATES from "./mobile/flutter/flutter-material.templates.js";
 import BASH_TEMPLATES from "./bash.templates.js";
 import VUE_TEMPLATES from "./vue.tempaltes.js";
 import GO_TEMPLATES from "./go/go.templates.js";
@@ -144,6 +145,11 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
                     name: 'HttpClient',
                     templates: FLUTTER_HTTP_CLIENT_TEMPLATES,
                     aliases: ['http-client', 'http'],
+                },
+                {
+                    name: 'Material',
+                    templates: FLUTTER_MATERIAL_TEMPLATES,
+                    aliases: ['flutter-material'],
                 },
             ],
         },
