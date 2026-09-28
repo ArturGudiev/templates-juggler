@@ -24,5 +24,18 @@ export default [
         a := assert.New(t)
         a.Equal(1, 1)
         `
+    },
+    {
+        title: 'Test coverage stats',
+        content: `
+        
+        ----- in terminal:  
+        go tool cover -func=cover.out
+
+        ----- in browser: 
+        go test -coverprofile=cover.out ./service
+        go tool cover -html=cover.out
+        
+        `
     }
 ] as Template[];
