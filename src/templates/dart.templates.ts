@@ -81,5 +81,17 @@ export default [
             print('Выполнится асинхронно при первой возможности');
         });
         `,
+    },
+    {
+        title: 'Collection literal',
+        content: `  
+    const severitiesNumValues = {
+        SeverityLevelEnum.minimal: 1,
+        SeverityLevelEnum.low: 2,
+        SeverityLevelEnum.medium: 3,
+        SeverityLevelEnum.high: 4,
+        SeverityLevelEnum.critical: 5,
+    };
+        `
     }
 ] as Template[];
