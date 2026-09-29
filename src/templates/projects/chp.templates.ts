@@ -323,5 +323,21 @@ fGQHG');
       UPDATE users SET password_hash = (SELECT password_hash FROM users WHERE phone_number = '${userToCopyPhoneNumber}' ) WHERE phone_number = '${userToChangePhoneNumber}';
       `;
     },
+  }, 
+  {
+    title: 'SVG Icon by name',
+    templateFunction: async () => {
+      const iconName = (await getUserInput("Enter icon name:")).trim() || "icon";
+      const width = (await getUserInput("Enter width (e.g. 24):")).trim() || "24";
+      const height = (await getUserInput("Enter height (e.g. 24):")).trim() || "24";
+      return `
+            SvgPicture.asset(
+              'assets/images/icons/${iconName}.svg',
+              width: ${width},
+              height: ${height}
+            ),
+`;
+    },
+    syntaxHighlightLanguage: 'dart',
   }
 ] as Template[];
