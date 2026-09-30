@@ -4,7 +4,9 @@ import { Template } from "../types/template.interface.js";
 export default [
     {
         title: 'install single package',
-        content: ``
+        content: `
+        flutter pub add <package_name>
+        `
     }, 
     {
         title: 'destructure final',
