@@ -104,5 +104,23 @@ func main() {
 		return nil
 	}
         `
+    }, 
+    {
+        title: 'String: Print string symbol',
+        content: `
+        // ✅ Вариант 1: Явное приведение к строке
+        fmt.Println(string(s[0])) // Выведет: H
+
+        // ✅ Вариант 2: Использование fmt.Printf с флагом %c (character)
+        fmt.Printf("%c\\n", s[0])  // Выведет: H
+
+        `
+    },
+    {
+        title: 'IO: Enter a string',
+        content: `
+        var input string
+        fmt.Scanln(&input)
+        `
     }
 ] as Template[];

@@ -1,4 +1,4 @@
-import { Template, TemplateNode } from "src/types/template.interface.js";
+import { Template, TemplateNode } from "../types/template.interface.js";
 import BOOTSTRAP_TEMPLATES from "./bootstrap.tempaltes.js";
 import FLUTTER_TEMPLATES from "./flutter.templates.js";
 import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter-style.templates.js";
