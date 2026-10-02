@@ -310,7 +310,34 @@ fGQHG');
   {
     title: 'Chp Docker: run alembic on backend',
     content: `
-    docker exec -it chp-dev-backend alembic upgrade head
+      docker exec -it chp-dev-backend alembic upgrade head
     `
   },
+  {
+    title: 'CHp DB: set password_hash for user from another user by phone number',
+    templateFunction: async () => {
+      const userToChangePhoneNumber = (await getUserInput("Enter dst phone number (у кого поменять e.g. 70000000003):")).trim();
+      const userToCopyPhoneNumber = (await getUserInput("Enter src phone number (у кого скопировать e.g. 70000000001):")).trim();
+
+      return `
+      UPDATE users SET password_hash = (SELECT password_hash FROM users WHERE phone_number = '${userToCopyPhoneNumber}' ) WHERE phone_number = '${userToChangePhoneNumber}';
+      `;
+    },
+  }, 
+  {
+    title: 'SVG Icon by name',
+    templateFunction: async () => {
+      const iconName = (await getUserInput("Enter icon name:")).trim() || "icon";
+      const width = (await getUserInput("Enter width (e.g. 24):")).trim() || "24";
+      const height = (await getUserInput("Enter height (e.g. 24):")).trim() || "24";
+      return `
+            SvgPicture.asset(
+              'assets/images/icons/${iconName}.svg',
+              width: ${width},
+              height: ${height}
+            ),
+`;
+    },
+    syntaxHighlightLanguage: 'dart',
+  }
 ] as Template[];

@@ -86,5 +86,23 @@ esac
         content: `
         ssh user@remote-host "command"
         `,
-    }   
+    },
+    {
+        title: 'create alias in profile',
+        content: `
+        alias имя_алиаса="оригинальная команда"
+        `
+    },
+    {
+        title: 'create multiline string in variable and print it',
+        content: `
+        multiline_string="
+        line1
+        line2
+        line3
+        "
+        echo "$multiline_string"
+
+        `
+    }
 ] as Template[];

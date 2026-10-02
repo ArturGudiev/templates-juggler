@@ -1,13 +1,16 @@
 import { Template, TemplateNode } from "../types/template.interface.js";
 import BOOTSTRAP_TEMPLATES from "./bootstrap.tempaltes.js";
-import FLUTTER_TEMPLATES from "./flutter.templates.js";
-import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter-style.templates.js";
-import FLUTTER_CONFIGURATION_TEMPLATES from "./mobile/flutter-configuration.templates.js";
+import FLUTTER_TEMPLATES from "./mobile/flutter/flutter.templates.js";
+import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter/flutter-style.templates.js";
+import FLUTTER_CONFIGURATION_TEMPLATES from "./mobile/flutter/flutter-configuration.templates.js";
+import FLUTTER_HTTP_CLIENT_TEMPLATES from "./mobile/flutter/flutter-http-client.templates.js";
+import FLUTTER_MATERIAL_TEMPLATES from "./mobile/flutter/flutter-material.templates.js";
 import BASH_TEMPLATES from "./bash.templates.js";
 import VUE_TEMPLATES from "./vue.tempaltes.js";
-import GO_TEMPLATES from "./go.templates.js";
-import GO_ENT_TEMPLATES from "./go_ent.templates.js";
-import GO_GIN_TEMPLATES from "./go-gin.templates.js";
+import GO_TEMPLATES from "./go/go.templates.js";
+import GO_ENT_TEMPLATES from "./go/go_ent.templates.js";
+import GO_GIN_TEMPLATES from "./go/go-gin.templates.js";
+import GO_TESTIFY_TEMPLATES from "./go/testify.templates.js";
 import MATERIAL_TEMPLATES from "./material.templates.js";
 import FASTAPI_TEMPLATES from "./fastapi.templates.js";
 import POSTGRESQL_TEMPLATES from "./postgresql.templates.js";
@@ -138,6 +141,16 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
                     name: 'Configuration',
                     templates: FLUTTER_CONFIGURATION_TEMPLATES,
                 },
+                {
+                    name: 'HttpClient',
+                    templates: FLUTTER_HTTP_CLIENT_TEMPLATES,
+                    aliases: ['http-client', 'http'],
+                },
+                {
+                    name: 'Material',
+                    templates: FLUTTER_MATERIAL_TEMPLATES,
+                    aliases: ['flutter-material'],
+                },
             ],
         },
         {
@@ -152,6 +165,13 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'Go',
             templates: GO_TEMPLATES,
+            children: [
+                {
+                    name: 'Testify',
+                    templates: GO_TESTIFY_TEMPLATES,
+                    aliases: ['testify'],
+                },
+            ],
         },
         {
             name: 'Go Ent',

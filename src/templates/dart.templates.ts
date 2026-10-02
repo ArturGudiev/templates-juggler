@@ -4,7 +4,9 @@ import { Template } from "../types/template.interface.js";
 export default [
     {
         title: 'install single package',
-        content: ``
+        content: `
+        flutter pub add <package_name>
+        `
     }, 
     {
         title: 'destructure final',
@@ -58,6 +60,39 @@ export default [
         content: `
     _downloadFutures = {
       for (final file in _fileMetas) file.id: _filesApi.downloadFile(file),
+    };
+        `
+    },
+    {
+        title: 'Create random integer in range from A to B',
+        content: `
+        final random = Random();
+        final randomNumber = random.nextInt(B - A + 1) + A;
+        `
+    }, 
+    {
+        title: 'String interpolation',
+        content: `
+        ' my string and $myVariable'
+        `
+    },
+    {
+        title: 'Async: setTimeout(..., 0) analog',
+        content: `
+        Timer.run(() {
+            print('Выполнится асинхронно при первой возможности');
+        });
+        `,
+    },
+    {
+        title: 'Collection literal',
+        content: `  
+    const severitiesNumValues = {
+        SeverityLevelEnum.minimal: 1,
+        SeverityLevelEnum.low: 2,
+        SeverityLevelEnum.medium: 3,
+        SeverityLevelEnum.high: 4,
+        SeverityLevelEnum.critical: 5,
     };
         `
     }

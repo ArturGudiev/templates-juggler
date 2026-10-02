@@ -1,7 +1,7 @@
 import { getUserInput, selectFromList } from "ag-utils-lib";
-import { Template } from "../../types/template.interface.js";
-import { clearScreen } from "../../utils/cli.utils.js";
-import { selectSeveralFromList } from "../../utils/select-several.temp.js";
+import { Template } from "../../../types/template.interface.js";
+import { clearScreen } from "../../../utils/cli.utils.js";
+import { selectSeveralFromList } from "../../../utils/select-several.temp.js";
 
 export default [
   {
@@ -294,6 +294,12 @@ export default [
     title: 'Get screen width',
     content: `
     final screenWidth = MediaQuery.of(context).size.width;
+    `
+  }, 
+  {
+    title: 'Wrap text (int several lines) when ',
+    content: `
+      wrap it with Expanded
     `
   }
 ] as Template[];

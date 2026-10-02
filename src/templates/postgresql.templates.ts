@@ -112,6 +112,10 @@ export default [
             `;
         },
     },
+    {
+        title: 'IN operator',
+        content: `SELECT * FROM users WHERE id IN (1, 2, 3);`
+    }
 
 
 ] as Template[];

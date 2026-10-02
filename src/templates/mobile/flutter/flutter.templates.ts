@@ -1,5 +1,5 @@
 import { getUserInput, selectFromList as selectItemFromList } from "ag-utils-lib";
-import { Template } from "../types/template.interface.js";
+import { Template } from "../../../types/template.interface.js";
 
 export default [
   { title: "Filter requests", content: "t:json" },
@@ -96,16 +96,21 @@ export default [
   },
    {
     title: "Stateless widget",
-    content: `
+    templateFunction: async () => {
+      let widgetName = (await getUserInput("Enter widget class name (PascalCase, e.g. UserCard):")).trim();
+      if (!widgetName) {
+        widgetName = "UserCard";
+      }
+      return `
 import 'package:flutter/material.dart';
 
-class UserCard extends StatelessWidget {
+class ${widgetName} extends StatelessWidget {
   // Поля в Stateless виджете всегда должны быть final
   final String name;
   final VoidCallback onTap;
 
   // Конструктор
-  const UserCard({
+  const ${widgetName}({
     super.key, 
     required this.name, 
     required this.onTap,
@@ -130,7 +135,8 @@ class UserCard extends StatelessWidget {
     );
   }
 }
-    `,
+`;
+    },
   },
 
   {
