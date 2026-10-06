@@ -287,5 +287,38 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
       ),
     ),
     `
+  },
+  {
+    title: 'Regenerate freezed types', 
+    content: `
+    dart run build_runner build --delete-conflicting-outputs
+
+    dart run build_runner clean
+    dart run build_runner build --delete-conflicting-outputs
+    `
+  },
+  {
+    title: 'Check what platform is running (Android or iOS)',
+    content: `
+    if (Platform.isAndroid) {
+      return 'Android';
+    } else if (Platform.isIOS) {
+      return 'iOS';
+    } else {
+      return 'Unknown';
+    }
+    `
+  }, 
+  {
+    title: 'Android emulator commands',
+    content: `
+    
+    // list of emulators
+    ~/Library/Android/sdk/emulator/emulator -list-avds
+    
+    // start emulator
+    ~/Library/Android/sdk/emulator/emulator -avd <emulator_name>
+    
+    `
   }
 ] as Template[];

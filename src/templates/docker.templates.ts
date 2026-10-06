@@ -60,5 +60,11 @@ docker builder prune -a    # clear cache
    {
       title: 'Docker compose: stop project',
       content: 'docker compose down',
+   },
+   {
+      title: 'Copy file from local vm to docker container',
+      content: `
+        docker cp /path/to/local/file.txt container_name:/path/in/container/
+      `
    }
 ] as Template[];
