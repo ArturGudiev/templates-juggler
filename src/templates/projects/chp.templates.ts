@@ -339,5 +339,11 @@ fGQHG');
 `;
     },
     syntaxHighlightLanguage: 'dart',
+  },
+  {
+    title: 'Add state to Widget State',
+    content: `
+    final _appState = getIt<AppStateProvider>();
+    `
   }
 ] as Template[];
