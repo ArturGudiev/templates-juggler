@@ -345,5 +345,11 @@ fGQHG');
     content: `
     final _appState = getIt<AppStateProvider>();
     `
+  }, 
+  {
+    title: 'Watch testing group',
+    content: `
+    ./scripts/test.sh --watch-group ResetPasswordPanel
+    `
   }
 ] as Template[];

@@ -320,5 +320,24 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
     ~/Library/Android/sdk/emulator/emulator -avd <emulator_name>
     
     `
+  },
+  {
+    title: 'Testing: test a special group in watch mode',
+    content: `
+    // group('ResetPasswordPanel', () {
+    
+    flutter test test/pages/reset_password_panel_test.dart --name "ResetPasswordPanel" --watch
+    `
+  },
+  {
+    title: 'Testing: query to find a widget',
+    content: `
+    final phoneInput = find.byKey(const Key('phoneInput'));
+    expect(phoneInput, findsOneWidget);
+
+    final button = tester.widget<ElevatedButton>(
+      find.byKey(const Key('phoneInput'))
+    );
+    `,
   }
 ] as Template[];
