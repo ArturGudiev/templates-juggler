@@ -77,5 +77,16 @@ git config --global mergetool.vscode.cmd "code --wait --merge \$LOCAL \$REMOTE \
         # change order there
         # close file 
         `
+    },
+    {
+        title: 'Revert git reset HEAD~1 action',
+        content: `
+        git reset ORIG_HEAD --soft
+        
+        При каждом «опасном» действии вроде reset или 
+        rebase Git сохраняет предыдущее положение ветки
+        в специальную переменную ORIG_HEAD. Чтобы вернуть
+        удаленный коммит обратно, просто выполните:
+        `,
     }
 ] as Template[];
