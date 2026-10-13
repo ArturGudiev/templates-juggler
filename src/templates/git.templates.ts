@@ -70,4 +70,12 @@ git config --global mergetool.vscode.cmd "code --wait --merge \$LOCAL \$REMOTE \
         title: 'Set upstream automatically',
         content: 'git config --global push.autoSetupRemote true'
     },
+    {
+        title: 'Change order of local commits',
+        content: `
+        git rebase -i HEAD~3
+        # change order there
+        # close file 
+        `
+    }
 ] as Template[];
