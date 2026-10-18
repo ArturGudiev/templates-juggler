@@ -160,5 +160,17 @@ func main() {
         var input string
         fmt.Scanln(&input)
         `
+    },
+    {
+        title: `Concurrency: Wait Group`,
+        content: `
+        var wg sync.WaitGroup
+        wg.Add(1)
+        go func() {
+            defer wg.Done()
+            fmt.Println("Hello, World!")
+        }()
+        wg.Wait()
+        `
     }
 ] as Template[];
