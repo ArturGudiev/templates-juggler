@@ -5,6 +5,7 @@ import FLUTTER_STYLE_TEMPLATES from "./mobile/flutter/flutter-style.templates.js
 import FLUTTER_CONFIGURATION_TEMPLATES from "./mobile/flutter/flutter-configuration.templates.js";
 import FLUTTER_HTTP_CLIENT_TEMPLATES from "./mobile/flutter/flutter-http-client.templates.js";
 import FLUTTER_MATERIAL_TEMPLATES from "./mobile/flutter/flutter-material.templates.js";
+import FLUTTER_LAYOUT_TEMPLATES from "./mobile/flutter/flutter-layout.templates.js";
 import BASH_TEMPLATES from "./bash.templates.js";
 import VUE_TEMPLATES from "./vue.tempaltes.js";
 import GO_TEMPLATES from "./go/go.templates.js";
@@ -152,6 +153,11 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
                     name: 'Material',
                     templates: FLUTTER_MATERIAL_TEMPLATES,
                     aliases: ['flutter-material'],
+                },
+                {
+                    name: 'Layout',
+                    templates: FLUTTER_LAYOUT_TEMPLATES,
+                    aliases: ['flutter-layout'],
                 },
             ],
         },

@@ -339,5 +339,29 @@ class _AddIncidentPanelState extends State<AddIncidentPanel> {
       find.byKey(const Key('phoneInput'))
     );
     `,
+  },
+  {
+    title: 'Safe Area example',
+    content: `
+    final safe = MediaQuery.paddingOf(context);
+    final topMargin = 36;
+    final bottomMargin = 36;
+    return Padding(
+      padding: EdgeInsets.only(
+        top: safe.top + topMargin,
+        bottom: safe.bottom + bottomMargin,
+        left: 16,
+        right: 16,
+      ),
+      child: SizedBox(
+        width: double.infinity,
+        height: double.infinity,
+        child: Container(
+          decoration: BoxDecoration(color: Colors.red),
+          child: Text("Filters panel")
+        ),
+      ),
+    );
+    `,
   }
 ] as Template[];
