@@ -5,6 +5,18 @@ import { selectSeveralFromList } from "../../../utils/select-several.temp.js";
 
 export default [
   {
+    title: 'Container border',
+    
+    content: `
+    decoration: BoxDecoration(
+      border: Border.all(
+        color: Colors.red,
+        width: 1,
+      ),
+    ),
+    `
+  },
+  {
     title: 'Text style interactive',
     templateFunction: async () => {
       clearScreen();
@@ -300,6 +312,33 @@ export default [
     title: 'Wrap text (int several lines) when ',
     content: `
       wrap it with Expanded
+    `
+  },
+  {
+    title: 'Prompt to compute start and end points of coordinates of gradient',
+    content: `
+**Prompt**
+
+From this Figma SVG, compute Flutter \`LinearGradient\` \`begin\` / \`end\`.
+
+**Given:** SVG + object size (W×H) + direction (e.g. light TL → dark BR) + which hex is start/end if needed.
+
+**Math** (\`gradientUnits="userSpaceOnUse"\`, shape origin usually \`0,0\`):
+\`\`\`
+Alignment = (2*x/W - 1, 2*y/H - 1)
+\`\`\`
+- \`x1,y1\` + first \`<stop>\` → one end  
+- \`x2,y2\` + last \`<stop>\` → other end  
+
+Glue each color to its point. Put **my start color** on \`begin\`, **end color** on \`end\` (swap if SVG order is reversed).
+
+**Return only:**
+\`\`\`dart
+begin: Alignment(...), // #hex
+end: Alignment(...),   // #hex
+colors: [#hex, #hex],
+\`\`\`
+Keep values outside \`[-1,1]\`. If raw points don’t match the stated TL→BR direction, say so and show raw numbers — don’t invent flips.
     `
   }
 ] as Template[];

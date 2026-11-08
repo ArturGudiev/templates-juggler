@@ -95,5 +95,15 @@ export default [
         SeverityLevelEnum.critical: 5,
     };
         `
+    },
+    {
+        title: 'Map (dict): creation',
+        content: `
+        final Map<String, int> map = {
+            'key1': 1,
+            'key2': 2,
+            'key3': 3,
+        };
+        `
     }
 ] as Template[];
