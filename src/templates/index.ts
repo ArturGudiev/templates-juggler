@@ -36,6 +36,7 @@ import NETWORK_TEMPLATES from "./network.templates.js"
 import PYTHON_TEMPLATES from "./python.templates.js"
 import NEXTJS_TEMPLATES from "./frontend/nextjs/nextjs-templates.templates.js"
 import REACT_TEMPLATES from "./js/react.templates.js"
+import SPRING_BOOT_TEMPLATES from "./backend/java/spring-boot.templates.js"
 
 export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Angular': ANGULAR_TEMPLATES,
@@ -63,6 +64,7 @@ export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'PostgreSQL': POSTGRESQL_TEMPLATES,
     'PowerShell': POWERSHELL_TEMPLATES,
     'React': REACT_TEMPLATES,
+    'Spring Boot': SPRING_BOOT_TEMPLATES,
     'SSH': SSH_TEMPLATES,
     'Swift': SWIFT_TEMPLATES,
     'Tailwind': TAILWIND_TEMPLATES,
@@ -75,6 +77,21 @@ export const TEMPLATES_ROOT_NODE: TemplateNode = {
         {
             name: 'Angular',
             templates: ANGULAR_TEMPLATES,
+        },
+        {
+            name: 'Backend',
+            children: [
+                {
+                    name: 'Java',
+                    children: [
+                        {
+                            name: 'Spring Boot',
+                            templates: SPRING_BOOT_TEMPLATES,
+                            aliases: ['spring', 'spring-boot'],
+                        },
+                    ],
+                },
+            ],
         },
         {
             name: 'Bash',
