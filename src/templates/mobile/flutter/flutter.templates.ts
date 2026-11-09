@@ -94,6 +94,48 @@ export default [
     )
 `,
   },
+  {
+    title: "Button with icon inlined",
+    content: `
+    FilledButton(
+      onPressed: () {},
+      style: FilledButton.styleFrom(
+        backgroundColor: Color(0xFFDFE5FF),
+        disabledBackgroundColor: Colors.green,
+        foregroundColor: Colors.white,
+        disabledForegroundColor: Colors.white.withValues(alpha: 0.65),
+        fixedSize: const Size.fromHeight(32),
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 0,
+        ),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        visualDensity: const VisualDensity(vertical: -2),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        spacing: 8,
+        children: [
+          SvgPicture.asset(
+            'assets/images/icons/close_icon.svg',
+            width: 10,
+            height: 10,
+            fit: BoxFit.contain,
+          ),
+          const Text(
+            'Сбросить',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 0.01,
+              color: Color(0xFF5C7DBA),
+            ),
+          ),
+        ],
+      ),
+    ),
+    `
+  },
    {
     title: "Stateless widget",
     templateFunction: async () => {

@@ -6,7 +6,6 @@ import { selectSeveralFromList } from "../../../utils/select-several.temp.js";
 export default [
   {
     title: 'Container border',
-    
     content: `
     decoration: BoxDecoration(
       border: Border.all(
@@ -14,6 +13,40 @@ export default [
         width: 1,
       ),
     ),
+    `
+  },
+  {
+    title: 'Container with 2 custom gradients: background and border',
+    content: `
+    Container(
+      width: 34,
+      height: 34,
+      padding: const EdgeInsets.all(1), // border thickness
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        gradient: const LinearGradient(
+          begin: Alignment(-1, -1),
+          end: Alignment(1, 1),
+          colors: [
+            Color(0x99FFFFFF),
+            Color(0x33FFFFFF),
+          ],
+        ),
+      ),
+      child: const DecoratedBox(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(7)), // radius minus padding
+          gradient: LinearGradient(
+            begin: Alignment(-1, -1),
+            end: Alignment(2.5, 2),
+            colors: [
+              Colors.white,
+              Color(0xFFD7E0ED),
+            ],
+          ),
+        ),
+      ),
+)
     `
   },
   {
