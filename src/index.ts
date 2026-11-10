@@ -1,7 +1,12 @@
 import { ArgumentParser } from "argparse";
-import { templatesNodeInteractive } from "./services/templates-node-interactive.service.js";
+import { displayTemplate, templatesNodeInteractive } from "./services/templates-node-interactive.service.js";
 import { TEMPLATES_ROOT_NODE } from "./templates/index.js";
-import { collectNodeNames, findTemplateNode } from "./utils/template-node.utils.js";
+import {
+    collectNodeNames,
+    collectTemplateAliases,
+    findTemplateByAlias,
+    findTemplateNode,
+} from "./utils/template-node.utils.js";
 
 async function main() {
     const parser = new ArgumentParser({
@@ -18,7 +23,28 @@ async function main() {
         help: "Template node name or alias (named form of the positional argument)",
     });
 
+    parser.add_argument("-t", "--template", {
+        dest: "templateAlias",
+        help: "Find and execute a template by its alias (or title)",
+    });
+
     const args = parser.parse_args();
+
+    if (args.templateAlias) {
+        const template = findTemplateByAlias(TEMPLATES_ROOT_NODE, args.templateAlias);
+        if (!template) {
+            console.error(`Error: Template "${args.templateAlias}" not found.`);
+            const aliases = collectTemplateAliases(TEMPLATES_ROOT_NODE);
+            if (aliases.length) {
+                console.log(`Available template aliases: ${aliases.join(", ")}`);
+            }
+            process.exit(1);
+        }
+
+        await displayTemplate(template, { wait: false });
+        return;
+    }
+
     const templatesNode = args.templatesNodeFlag ?? args.templatesNode;
 
     if (!templatesNode) {

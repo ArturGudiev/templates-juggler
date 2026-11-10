@@ -35,7 +35,8 @@ function printTemplates(templates: Template[] | undefined): void {
 
     console.log(chalk.yellow("\nTemplates:"));
     templates.forEach((template, index) => {
-        console.log(`${chalk.white(`  ${index + 1}.`)} ${chalk.yellow(template.title)}`);
+        const aliases = template.aliases?.length ? chalk.yellow.dim(` (${template.aliases.join(", ")})`) : "";
+        console.log(`${chalk.white(`  ${index + 1}.`)} ${chalk.yellow(template.title)}${aliases}`);
     });
 }
 
@@ -71,12 +72,14 @@ async function copyToClipboard(content: string): Promise<void> {
     }
 }
 
-async function displayTemplate(template: Template): Promise<void> {
+export async function displayTemplate(template: Template, options: { wait?: boolean } = {}): Promise<void> {
     const content = await templatesService.getTemplateContent(template);
     await copyToClipboard(content);
     console.log(`\nTemplate: ${template.title}`);
     printTemplateContent(content, template.syntaxHighlightLanguage);
-    await waitForUserInput();
+    if (options.wait !== false) {
+        await waitForUserInput();
+    }
 }
 
 async function handleTemplateCommand(

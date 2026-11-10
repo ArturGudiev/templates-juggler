@@ -4,6 +4,7 @@ export interface Template {
     fileContent?: string;
     syntaxHighlightLanguage?: string;
     templateFunction?: () => Promise<string>;
+    aliases?: string[];
     children?: Template[];
 }
 

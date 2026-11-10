@@ -1,5 +1,5 @@
 import { equalLowerStrings } from "ag-utils-lib";
-import { TemplateNode } from "../types/template.interface.js";
+import { Template, TemplateNode } from "../types/template.interface.js";
 
 export function findTemplateNode(root: TemplateNode, query: string): TemplateNode | null {
     if (equalLowerStrings(root.name, query)) {
@@ -20,6 +20,53 @@ export function findTemplateNode(root: TemplateNode, query: string): TemplateNod
     return null;
 }
 
+export function findTemplateByAlias(root: TemplateNode, query: string): Template | null {
+    for (const template of root.templates ?? []) {
+        if (equalLowerStrings(template.title, query)) {
+            return template;
+        }
+
+        if (template.aliases?.some((alias) => equalLowerStrings(alias, query))) {
+            return template;
+        }
+
+        for (const child of template.children ?? []) {
+            const foundInChildren = findTemplateInList(child, query);
+            if (foundInChildren) {
+                return foundInChildren;
+            }
+        }
+    }
+
+    for (const child of root.children ?? []) {
+        const found = findTemplateByAlias(child, query);
+        if (found) {
+            return found;
+        }
+    }
+
+    return null;
+}
+
+function findTemplateInList(template: Template, query: string): Template | null {
+    if (equalLowerStrings(template.title, query)) {
+        return template;
+    }
+
+    if (template.aliases?.some((alias) => equalLowerStrings(alias, query))) {
+        return template;
+    }
+
+    for (const child of template.children ?? []) {
+        const found = findTemplateInList(child, query);
+        if (found) {
+            return found;
+        }
+    }
+
+    return null;
+}
+
 export function collectNodeNames(root: TemplateNode): string[] {
     const names = [root.name];
 
@@ -28,4 +75,28 @@ export function collectNodeNames(root: TemplateNode): string[] {
     }
 
     return names;
+}
+
+export function collectTemplateAliases(root: TemplateNode): string[] {
+    const aliases: string[] = [];
+
+    for (const template of root.templates ?? []) {
+        collectTemplateAliasesFromTemplate(template, aliases);
+    }
+
+    for (const child of root.children ?? []) {
+        aliases.push(...collectTemplateAliases(child));
+    }
+
+    return aliases;
+}
+
+function collectTemplateAliasesFromTemplate(template: Template, aliases: string[]): void {
+    if (template.aliases?.length) {
+        aliases.push(...template.aliases);
+    }
+
+    for (const child of template.children ?? []) {
+        collectTemplateAliasesFromTemplate(child, aliases);
+    }
 }
