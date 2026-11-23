@@ -104,5 +104,11 @@ esac
         echo "$multiline_string"
 
         `
-    }
+    },
+    {
+        title: 'Use script arguemnt or default',
+        content: `
+        ARGUMENT="\${1:-default_value}"
+        `
+    },
 ] as Template[];
