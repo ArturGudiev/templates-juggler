@@ -37,6 +37,7 @@ import PYTHON_TEMPLATES from "./python.templates.js"
 import NEXTJS_TEMPLATES from "./frontend/nextjs/nextjs-templates.templates.js"
 import REACT_TEMPLATES from "./js/react.templates.js"
 import SPRING_BOOT_TEMPLATES from "./backend/java/spring-boot.templates.js"
+import LINEAR_REGRESSION_TEMPLATES from "./ai/linear-regression.templates.js"
 
 export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
     'Angular': ANGULAR_TEMPLATES,
@@ -74,6 +75,16 @@ export const TEMPLATES_ROOT_SET: {[key: string]: Template[]} = {
 export const TEMPLATES_ROOT_NODE: TemplateNode = {
     name: 'Tempaltes Root',
     children: [
+        {
+            name: 'AI',
+            children: [
+                {
+                    name: 'Linear Regression',
+                    templates: LINEAR_REGRESSION_TEMPLATES,
+                    aliases: ['linear-regression', 'linreg'],
+                },
+            ],
+        },
         {
             name: 'Angular',
             templates: ANGULAR_TEMPLATES,

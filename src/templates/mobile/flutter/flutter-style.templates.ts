@@ -348,6 +348,21 @@ export default [
     `
   },
   {
+    title: 'Draw a bottom border',
+    content: `
+    Container(
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: Colors.black,
+            width: 1,
+          ),
+        ),
+      ),
+    );
+    `
+  },
+  {
     title: 'Prompt to compute start and end points of coordinates of gradient',
     content: `
 **Prompt**

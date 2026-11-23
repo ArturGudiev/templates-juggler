@@ -234,4 +234,28 @@ export default [
             return buildEntityField(name, required, parsedType.javaType, parsedType.attrs);
         },
     },
+    {
+        title: "Repository",
+        aliases: ["spring-repo"],
+        syntaxHighlightLanguage: "java",
+        templateFunction: async () => {
+            const rawName = (await getUserInput("Enter entity name (e.g. Wallet, wallet):")).trim();
+            if (!rawName) {
+                return "";
+            }
+
+            const entityName = toPascalCase(rawName);
+
+            return `
+        package com.ledger.repository;
+
+        import org.springframework.data.jpa.repository.JpaRepository;
+        import com.ledger.model.${entityName};
+
+        public interface ${entityName}Repository extends JpaRepository<${entityName}, Long> {
+
+        }    // Repository for ${entityName}                
+`;
+        },
+    },
 ] as Template[];
